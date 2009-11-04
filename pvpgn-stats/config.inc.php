@@ -33,6 +33,7 @@
 //      db_database:       MySQL Database Name
 //      db_user:           MySQL Username
 //      db_pass:           MySQL Password
+//      db_prefix          MySQL Database Prefix
 //      db_record:         Name of the table with player records in your MySQL DB
 //      db_bnet:           Name of the table with player info`s in your MySQL DB
 //      db_profile:        Name of the table with player profile in your MySQL DB
@@ -57,19 +58,21 @@
 // *NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*
 
 // System Config settings
-$db_host = "192.168.0.10";
-$db_database = "server1_db";
-$db_user = "root";
-$db_pass = "password";
-$db_record = "Record";
-$db_bnet = "BNET";
-$db_profile = "profile";
-$db_teams = "Team";
-$db_friend = "friend";
-$db_counters = "counters";
-$db_d2 = "d2ladder";
-$homepage = "http://server1.onlinebattlezone.net/";
-$ladderroot = "http://server1.onlinebattlezone.net/ladders/";
+$site_name = "PvPGN server";
+$db_host = "localhost";
+$db_database = "pvpgn";
+$db_user = "pvpgn";
+$db_pass = "pvpgnrocks";
+$db_prefix = "pvpgn_";
+$db_record = $db_prefix."Record";
+$db_bnet = $db_prefix."bnet";
+$db_profile = $db_prefix."profile";
+$db_teams = $db_prefix."team";
+$db_friend = $db_prefix."friend";
+$db_counters = $db_prefix."counters";
+$db_d2 = $db_prefix."d2ladder";
+$homepage = "http://my.server/";
+$ladderroot = "http://my.server/ladder/";
 
 
 $theme = "default";
@@ -78,7 +81,7 @@ $use_php_xslt = true; // only change this if you know you have xsltproc installe
 $xslt_command = "xsltproc"; // for when you don't have php4-xslt but have the xsltproc command or sabcmd
 
 // set pvpgn_dir to where you pvpgn directory is, include trailing slash
-$pvpgn_dir = "/usr/local/pvpgn-1.6.6/";
+$pvpgn_dir = "D:/pvpgn/";
 $ladders_dir = $pvpgn_dir."var/ladders/";
 
 $w3ladder_xsl_file = getcwd()."/themes/$theme/w3ladder.xsl";
@@ -118,26 +121,10 @@ $page_max = "50";
 $default_game = "W3XP";
 $default_type = "solo";
 $date_format = " F j - G:i";
-$d2ladder_file = "/usr/local/pvpgn/var/ladders/ladder.D2DV";
+$d2ladder_file = "D:/pvpgn/var/ladders/ladder.D2DV";
 $d2update_time = "3600";
-$stats_version = "2.4.00-CVS-2.13.2005";
+$stats_version = "2.4.20";
 
-// ---------------------------------------------------------------------------------
-// Administration Interface settings
-//
-//      max_rank:          Maximum rank number allowed on your server
-//      site_user:         Your username to access admin interface
-//      site_pass:         Your password to access admin interface, hashed with md5()
-//      default_sort_by:   Can be auth_lock, auth_admin, uid or acct_username
-//      default_sort_dir:  Can be DESC or ASC
-//
-// ---------------------------------------------------------------------------------
-
-$max_rank = "1000";
-$site_user = "admin";
-$site_pass = "69e5ee7923c4dc2bcf52dfab07848566";
-$default_sort_by = "auth_admin";
-$default_sort_dir = "DESC";
 
 // ---------------------------------------------------------------------------------
 // Optional User file settings (unfinished, doesn`t work)

@@ -35,7 +35,13 @@ a:active {
 			<tr height="100%">
 				<td width="4" background="themes/bnet/res/left-bg.gif"></td>
 				<td width="8">&nbsp;</td>
-				<td align="center"><table align="center">
+				<td align="center">
+				<span style="color: gray; font: italic bold 12px Tahoma">View user stats for:&nbsp;&nbsp;&nbsp;</span>
+				<a href="stats.php?game=WAR3&user=[[username]]"><img src="themes/bnet/images/WAR3.jpg" border=0 alt="Warcraft 3: Reign of Chaos" width=28 hight=14></a>&nbsp;&nbsp;
+				<a href="stats.php?game=W3XP&user=[[username]]"><img src="themes/bnet/images/WARX.jpg" border=0 alt="Warcraft 3: The Frozen Throne" width=28 hight=14></a>&nbsp;&nbsp;
+				<img src="themes/bnet/images/star.jpg" border=0 alt="Starcraft" width=28 hight=14>&nbsp;&nbsp;
+				<a href="stats.php?game=SEXP&user=[[username]]"><img src="themes/bnet/images/SEXP.jpg" alt="Starcraft: Broodwar" width=28 hight=14 border=0></a>
+				<table align="center">
 	<tr>
 		<td align="left" width="325"><img src="themes/bnet/images/marine.gif"><br><img src="themes/bnet/images/star.gif"></td>
 		<td>
@@ -161,21 +167,13 @@ a:active {
 	var agt=navigator.userAgent.toLowerCase();
 	var operaBool = ((agt.indexOf("opera") != -1))
 		
-	if (operaBool) {
-	
-		document.write("<div style='POSITION: absolute; OVERFLOW: hidden;  WIDTH: 235px; HEIGHT: 419px;'>");
-	
-	} else {
-	
-		document.write("<div style='OVERFLOW: auto;  WIDTH: 235px; HEIGHT: 419px; scrollbar-Base-Color: 282724; scrollbar-Arrow-Color: 666666; scrollbar-3dLight-Color: 161616; scrollbar-DarkShadow-Color: black; scrollbar-Highlight-Color: 666666; scrollbar-Shadow-Color: 383838;'>");
-	
-	}
+"<div style='OVERFLOW: auto;  WIDTH: 235px; HEIGHT: 419px; scrollbar-Base-Color: 282724; scrollbar-Arrow-Color: 666666; scrollbar-3dLight-Color: 161616; scrollbar-DarkShadow-Color: black; scrollbar-Highlight-Color: 666666; scrollbar-Shadow-Color: 383838;'>
 
 	
 //-->															
                             </SCRIPT>
 			<!----Sroller Text------------------------------------------------------------>
-			<DIV style="WIDTH: 100%; POSITION: absolute;  TEXT-ALIGN: center">
+			<DIV style="WIDTH: 235px; POSITION: justify;  TEXT-ALIGN: center">
 <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
 	<TR>
                             <TD width="100%"><!--exp bar ------------------------------------------------------------------------------------->
@@ -419,7 +417,7 @@ border=0>
                                 <TBODY>
                                 <TR>
                                 <TD align=middle><SPAN class=rankingData>Rank: 
-                                <B>[[STAR_1_rank]]<SUP>[[STAR_1_pow]]</SUP></B></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+                                <B>[[STAR_1_rank]]<SUP>[[STAR_ladder_pow]]</SUP></B></SPAN></TD></TR></TBODY></TABLE></TD></TR>
                                 <TR>
                                 <TD><SPAN class=rankingData>Wins:</SPAN></TD>
                                 <TD align=right><B class=small>[[STAR_1_wins]]</B></TD></TR>
