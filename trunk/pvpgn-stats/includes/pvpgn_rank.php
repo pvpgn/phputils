@@ -18,6 +18,7 @@
 // To read the license please visit http://www.gnu.org/copyleft/gpl.html
 // ----------------------------------------------------------------------
 // Original author: jfro (imeepmeep@hotmail.com)
+// Author from 2.3.20: Snaiperx (http://www.rino.com.co/)
 // Author from 2.3.16: STORM (http://www.stormzone.ru/)
 // Tanzania theme author: Tanzania (tanzania@gmx.net)
 // ----------------------------------------------------------------------

@@ -63,7 +63,7 @@ class page_handle {
 				if(is_array($this->page_data[$key])) {
 					$main_content = str_replace("[[$key]]",$this->build_repeat($this->page_data[$key]),$main_content);
 				}
-				else {
+				else { 
 					$main_content = str_replace("[[$key]]",$this->page_data[$key],$main_content);
 				}
 			}
@@ -89,13 +89,10 @@ class page_handle {
 				$pos2 = strpos($temp,"]]");
 				$key = substr($temp,$pos+2,$pos2-$pos-2);
 				if(is_int($pos)&&is_int($pos2)) {
-					if ($data[$n][$key]=='') {
-							$temp = str_replace("[[$key]]",$this->page_data[$key],$temp);}
-					else {		
-					$temp = str_replace("[[".$key."]]",$data[$n][$key],$temp);}
+					if ($data[$n][$key]=='') $temp = str_replace("[[$key]]",$this->page_data[$key],$temp);
+					else $temp = str_replace("[[".$key."]]",$data[$n][$key],$temp);
 				}
-				else
-					$done = true;
+				else$done = true;
 			} while(!$done);
 			$output .= $temp;
 		}

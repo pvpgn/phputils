@@ -30,7 +30,7 @@ include_once("config.inc.php");
 
 $php_ver = PHP_VERSION;
 $php_ver = explode(".",$php_ver);
-if(($php_ver[0] >= 4 && $php_ver[1] == 0)) {
+if($php_ver[0] < 5 && $php_ver[1] < 3) {
 	print "<strong>Warning:</strong> Recomend upgrading to PHP 4.3.x<br />";
 	$POST = &$HTTP_POST_VARS;
 	$GET = &$HTTP_GET_VARS;

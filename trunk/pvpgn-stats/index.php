@@ -1,5 +1,5 @@
 <HTML><HEAD>
-<TITLE>Online Battle Zone - Ladders</TITLE>
+<TITLE><?php // This is how we pull our URL from the "config.inc.php" and replace all refrences// in this html filerequire_once("config.inc.php");echo $site_name;?> - Ladders</TITLE>
 <style type="text/css">
 <!--
 a:link {
@@ -38,11 +38,6 @@ MM_reloadPage(true);
 .style2 {font-size: 8pt}
 -->
 </style>
-<?php
-// This is how we pull our URL from the "config.inc.php" and replace all refrences
-// in this html file
-require_once("config.inc.php");
-?>
 
 <SCRIPT language=JavaScript src="themes/bnet/images/main/layerFunctions.js"></SCRIPT>
 
@@ -140,7 +135,7 @@ stats.php?game=W2BN&type=1"><IMG
 echo $ladderroot
 ?>
 
-stats.php?game=W3XP&type=solo"><IMG 
+stats.php?game=WAR3&type=solo"><IMG 
                                 height=7 src="themes/bnet/images/main/pixel.gif" width=3 
                                 border=0>Solo</A></SMALL></TD>
                     </TR>

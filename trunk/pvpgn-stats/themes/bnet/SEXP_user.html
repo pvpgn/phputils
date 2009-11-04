@@ -3,24 +3,12 @@
 <TITLE>PvPGN Stats - User Profiles</TITLE>
 <LINK href="themes/bnet/res/war3-human-ie.css" type=text/css rel=stylesheet>
 <LINK href="themes/bnet/res/war3-ladder-profiles.css" type=text/css rel=stylesheet>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><style type="text/css">
-<!--
-a:link {
-	color: #cba300;
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-	color: #cba300;
-}
-a:hover {
-	text-decoration: underline;
-}
-a:active {
-	text-decoration: none;
-}
--->
-</style></head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><style type="text/css"> <!-- a:link { color: #cba300; text-decoration: none; }
+	a:visited { text-decoration: none; color: #cba300; }
+	a:hover { text-decoration: underline; }
+	a:active { text-decoration: none; }
+	--> 
+	</style></head>
 <Body bgcolor="#000000" leftmargin="0" rightmargin="0" topmargin="0" bottommargin="0">
 
 <table cellspacing=0 cellpadding=0 width="100%" height="100%" border=0>
@@ -35,8 +23,13 @@ a:active {
 			<tr height="100%">
 				<td width="4" background="themes/bnet/res/left-bg.gif"></td>
 				<td width="8">&nbsp;</td>
-				<td align="center"><table align="center">
-	<tr>
+				<td align="center">
+				<span style="color: gray; font: italic bold 12px Tahoma">View user stats for:&nbsp;&nbsp;&nbsp;</span>
+				<a href="stats.php?game=WAR3&user=[[username]]"><img src="themes/bnet/images/WAR3.jpg" border=0 alt="Warcraft 3: Reign of Chaos" width=28 hight=14></a>&nbsp;&nbsp;
+				<a href="stats.php?game=W3XP&user=[[username]]"><img src="themes/bnet/images/WARX.jpg" border=0 alt="Warcraft 3: The Frozen Throne" width=28 hight=14></a>&nbsp;&nbsp;
+				<a href="stats.php?game=STAR&user=[[username]]"><img src="themes/bnet/images/star.jpg" border=0 alt="Starcraft" width=28 hight=14></a>&nbsp;&nbsp;
+				<img src="themes/bnet/images/SEXP.jpg" alt="Starcraft: Broodwar" width=28 hight=14 border=0>
+				<table align="center"><tr>
 		<td align="left" width="325"><img src="themes/bnet/images/xzerg.gif"><br><img src="themes/bnet/images/sexp.gif"></td>
 		<td>
 		<TABLE cellSpacing=0 cellPadding=0 width=200 border=0>
@@ -79,7 +72,7 @@ a:active {
 		<TD><SPAN class=rankingData>Player Name:</SPAN><BR>
 			<TABLE cellSpacing=0 cellPadding=0 border=0>
 				<TR>
-                	<TD noWrap><SPAN><div align="left"><B><font color="#FFFFFF">[[username]]</font></div></B></SPAN></TD>
+                	<TD noWrap><SPAN><div align="left"><B><font color="#ffffff">[[username]]</font></div></B></SPAN></TD>
                 	<TD><SPAN>&nbsp;<img src="themes/bnet/res/search.gif" width=17 border=0></SPAN></TD>
 				</TR>
 			</TABLE><BR><IMG height=8 src="themes/bnet/res/pixel.gif" width=5><BR><SPAN class=rankingData>Clan Name:<BR><B>[[clanname]]</B></SPAN><BR>
@@ -90,7 +83,7 @@ a:active {
 <TABLE cellSpacing=0 cellPadding=0 width=250 border=0>
 	<TR>
 		<TD rowSpan=2><IMG height=167 src="themes/bnet/res/pixel.gif" width=10></TD>
-		<TD vAlign=top><SPAN><SPAN class=rankingData>Homepage:</SPAN><BR><DIV id=homePage><B class=small>[[location]]</B></DIV><SPAN><SPAN class=rankingData>Additional Info:</SPAN><BR><DIV id=additionalInfo><B class=small>[[description]]</B></DIV></TD>
+		<TD vAlign=top><SPAN><SPAN class=rankingData>Homepage:</SPAN><BR><DIV id=homePage><B class=small>[[location]]</B></DIV><SPAN><SPAN class=rankingData>Additional Info:</SPAN><BR><DIV id=additionalInfo><B class=small>[[description]]</B></DIV></SPAN></SPAN></TD>
 	</TR>
 	<TR>
 	  <TD vAlign=bottom><IMG height=6 src="themes/bnet/res/pixel.gif" width=5><BR><SPAN class=rankingData>Last Login:</SPAN><BR><B class=small>[[acct_lastlogin_time]]</B><IMG height=6 src="themes/bnet/res/pixel.gif" width=5><BR><SPAN class=rankingData>Play History:</SPAN></TD>
@@ -102,34 +95,34 @@ a:active {
 		<TD background="themes/bnet/rez/metal.gif">
 			<TABLE width="100%" border=0 cellPadding=1 cellSpacing=0 style="BACKGROUND-COLOR: #271a13">
 				<TR>
-					<TD class=rankingHeader align=middle></TD>
-					<TD class=rankingHeader align=middle>&nbsp;Normal&nbsp;</TD>
-					<TD class=rankingHeader align=middle>&nbsp;Ladder&nbsp;</TD>
+					<TD class=rankingHeader align=center></TD>
+					<TD class=rankingHeader align=center>&nbsp;Normal&nbsp;</TD>
+					<TD class=rankingHeader align=center>&nbsp;Ladder&nbsp;</TD>
 				</TR>
 				<TR style="BACKGROUND-COLOR: #666666">
 					<TD class=rankingHeader vAlign=top align=right>Wins:</TD>
-					<TD class=rankingRow vAlign=top align=middle> [[SEXP_0_wins]]</TD>
-					<TD class=rankingRow vAlign=top align=middle> [[SEXP_1_wins]]</TD>
+					<TD class=rankingRow vAlign=top align=center> [[SEXP_0_wins]]</TD>
+					<TD class=rankingRow vAlign=top align=center> [[SEXP_1_wins]]</TD>
 				</TR>
 				<TR style="BACKGROUND-COLOR: #333333">
 					<TD class=rankingHeader vAlign=top align=right>Losses:</TD>
-					<TD class=rankingRow vAlign=top align=middle>[[SEXP_0_losses]]</TD>
-					<TD class=rankingRow vAlign=top align=middle>[[SEXP_1_losses]]</TD>
+					<TD class=rankingRow vAlign=top align=center>[[SEXP_0_losses]]</TD>
+					<TD class=rankingRow vAlign=top align=center>[[SEXP_1_losses]]</TD>
 				</TR>
 				<TR style="BACKGROUND-COLOR: #666666">
 					<TD class=rankingHeader vAlign=top align=right>Draws:</TD>
-					<TD class=rankingRow vAlign=top align=middle>[[SEXP_0_draws]]</TD>
-					<TD class=rankingRow vAlign=top align=middle>[[SEXP_1_draws]]</TD>
+					<TD class=rankingRow vAlign=top align=center>[[SEXP_0_draws]]</TD>
+					<TD class=rankingRow vAlign=top align=center>[[SEXP_1_draws]]</TD>
 				</TR>
 				<TR style="BACKGROUND-COLOR: #333333">
 					<TD class=rankingHeader vAlign=top align=right>Disconnects:</TD>
-					<TD class=rankingRow vAlign=top align=middle>[[SEXP_0_disconnects]]</TD>
-					<TD class=rankingRow vAlign=top align=middle>[[SEXP_1_disconnects]]</TD>
+					<TD class=rankingRow vAlign=top align=center>[[SEXP_0_disconnects]]</TD>
+					<TD class=rankingRow vAlign=top align=center>[[SEXP_1_disconnects]]</TD>
 				</TR>
 				<TR style="BACKGROUND-COLOR: #666666">
 					<TD class=rankingHeader vAlign=top align=right>%Wins:</TD>
-					<TD class=rankingRow vAlign=top align=middle>[[SEXP_0_perc]] %</TD>
-					<TD class=rankingRow vAlign=top align=middle>[[SEXP_1_perc]] %</TD>
+					<TD class=rankingRow vAlign=top align=center>[[SEXP_0_perc]] %</TD>
+					<TD class=rankingRow vAlign=top align=center>[[SEXP_1_perc]] %</TD>
 				</TR>
 			</TABLE>
 		</TD>
@@ -161,21 +154,13 @@ a:active {
 	var agt=navigator.userAgent.toLowerCase();
 	var operaBool = ((agt.indexOf("opera") != -1))
 		
-	if (operaBool) {
-	
-		document.write("<div style='POSITION: absolute; OVERFLOW: hidden;  WIDTH: 235px; HEIGHT: 419px;'>");
-	
-	} else {
-	
-		document.write("<div style='OVERFLOW: auto;  WIDTH: 235px; HEIGHT: 419px; scrollbar-Base-Color: 282724; scrollbar-Arrow-Color: 666666; scrollbar-3dLight-Color: 161616; scrollbar-DarkShadow-Color: black; scrollbar-Highlight-Color: 666666; scrollbar-Shadow-Color: 383838;'>");
-	
-	}
+	<div style='OVERFLOW: auto;  WIDTH: 235px; HEIGHT: 419px; scrollbar-Base-Color: 282724; scrollbar-Arrow-Color: 666666; scrollbar-3dLight-Color: 161616; scrollbar-DarkShadow-Color: black; scrollbar-Highlight-Color: 666666; scrollbar-Shadow-Color: 383838;'>
 
 	
 //-->															
                             </SCRIPT>
 			<!----Sroller Text------------------------------------------------------------>
-			<DIV style="WIDTH: 100%; POSITION: absolute;  TEXT-ALIGN: center">
+			<DIV style="WIDTH: 235; position: justify; TEXT-ALIGN: center">
 <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
 	<TR>
                             <TD width="100%"><!--exp bar ------------------------------------------------------------------------------------->
@@ -183,7 +168,7 @@ a:active {
                               border=0>
                                 <TBODY>
                                 <TR>
-                                <TD align=middle width="100%"><!--exp bar ------------------------------------------------------------------------------------->
+                                <TD align=center width="100%"><!--exp bar ------------------------------------------------------------------------------------->
                                 <TABLE cellSpacing=0 cellPadding=0 
                                 background="themes/bnet/res/metal.gif" 
                                 border=0>
@@ -196,7 +181,7 @@ a:active {
                                 <TABLE cellSpacing=0 cellPadding=0 border=0>
                                 <TBODY>
                                 <TR>
-                                <TD align=middle><SPAN><SPAN class=header4>Normal
+                                <TD align=center><SPAN><SPAN class=header4>Normal
                                 Games</SPAN> 
                                 <TABLE cellSpacing=0 cellPadding=0 border=0>
                                 <TBODY>
@@ -224,7 +209,7 @@ a:active {
                                 width=180 
                                 border=0></TD></TR></TBODY></TABLE></SPAN></TD></TR>
                                 <TR>
-                                <TD align=middle>
+                                <TD align=center>
                                 <TABLE cellSpacing=0 cellPadding=0 width="100%" 
                                 border=0>
                                 <TBODY>
@@ -257,7 +242,7 @@ a:active {
                                 border=0>
                                 <TBODY>
                                 <TR>
-                                <TD align=middle><IMG height=1 
+                                <TD align=center><IMG height=1 
                                 src="themes/bnet/res/pixel.gif" 
                                 width=10></TD></TR></TBODY></TABLE><IMG height=2 
                                 src="themes/bnet/res/pixel.gif" 
@@ -271,7 +256,7 @@ a:active {
                                 <TD rowSpan=4><IMG height=1 
                                 src="themes/bnet/res/pixel.gif" 
                                 width=10></TD>
-                                <TD align=middle rowSpan=2>
+                                <TD align=center rowSpan=2>
                                 <TABLE 
                                 style="BORDER-RIGHT: #28221c 1px solid; BORDER-TOP: #0c0906 1px solid; BORDER-LEFT: #0c0906 1px solid; BORDER-BOTTOM: #3a332a 1px solid" 
                                 cellSpacing=0 cellPadding=4 width=120 
@@ -279,7 +264,7 @@ a:active {
                                 border=0>
                                 <TBODY>
                                 <TR>
-                                <TD align=middle><SPAN class=rankingData>Rank: 
+                                <TD align=center><SPAN class=rankingData>Rank: 
                                 <B>[[SEXP_0_rank]]<SUP>[[SEXP_pow]]</SUP></A></B></SPAN></TD></TR></TBODY></TABLE></TD></TR>
                                 <TR>
                                 <TD><SPAN class=rankingData>Wins:</SPAN></TD>
@@ -287,7 +272,7 @@ a:active {
                                 <TR>
                                 <TD><SPAN class=rankingData>Losses:</SPAN></TD>
                                 <TD align=right><B class=small>[[SEXP_0_losses]]</B></TD>
-                                <TD align=middle><SPAN class=rankingData>Last Result: <B class=small>[[SEXP_0_last_game_result]]</B></SPAN></TD></TR>
+                                <TD align=center><SPAN class=rankingData>Last Result: <B class=small>[[SEXP_0_last_game_result]]</B></SPAN></TD></TR>
                                 <TR>
                                 <TD><IMG height=1 
                                 src="themes/bnet/res/pixel.gif" 
@@ -311,9 +296,9 @@ a:active {
                               border=0>
                                 <TBODY>
                                 <TR>
-                                <TD align=middle><IMG height=1 
+                                <TD align=center><IMG height=1 
                                 src="themes/bnet/res/pixel.gif" 
-                                width=1></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!----arranged teams----------------------------------------------------------------------------------------->
+                                width=1></TD></TR></TBODY></TABLE></TD></TR></TABLE><!----arranged teams----------------------------------------------------------------------------------------->
                         <TABLE cellSpacing=0 cellPadding=0 width="100%" 
 border=0>
                           <TBODY>
@@ -323,7 +308,7 @@ border=0>
                               border=0>
                                 <TBODY>
                                 <TR>
-                                <TD align=middle width="100%"><!--exp bar ------------------------------------------------------------------------------------->
+                                <TD align=center width="100%"><!--exp bar ------------------------------------------------------------------------------------->
                                 <TABLE cellSpacing=0 cellPadding=0 
                                 background="themes/bnet/res/metal.gif" 
                                 border=0>
@@ -336,7 +321,7 @@ border=0>
                                 <TABLE cellSpacing=0 cellPadding=0 border=0>
                                 <TBODY>
                                 <TR>
-                                <TD align=middle><SPAN><SPAN class=header4>Ladder Games</SPAN> 
+                                <TD align=center><SPAN><SPAN class=header4>Ladder Games</SPAN> 
                                 <TABLE cellSpacing=0 cellPadding=0 border=0>
                                 <TBODY>
                                 <TR>
@@ -363,7 +348,7 @@ border=0>
                                 width=180 
                                 border=0></TD></TR></TBODY></TABLE></SPAN></TD></TR>
                                 <TR>
-                                <TD align=middle>
+                                <TD align=center>
                                 <TABLE cellSpacing=0 cellPadding=0 width="100%" 
                                 border=0>
                                 <TBODY>
@@ -385,7 +370,7 @@ border=0>
                                 <DIV 
                                 style="Z-INDEX: 200; LEFT: 55px; POSITION: relative; TOP: -25px"><B 
                                 class=small><B class=small>[[SEXP_1_perc]]% Wins 
-                                </B></DIV></TD>                               
+                                </B></DIV></B></TD>                               
                                 <TD width="50%"></TD>
                                 <TD 
                                 align=right><SMALL>[[WAR3_team_level_max]]</SMALL></TD></TR></TBODY></TABLE>
@@ -396,7 +381,7 @@ border=0>
                                 border=0>
                                 <TBODY>
                                 <TR>
-                                <TD align=middle><IMG height=1 
+                                <TD align=center><IMG height=1 
                                 src="themes/bnet/res/pixel.gif" 
                                 width=10></TD></TR></TBODY></TABLE><IMG height=2 
                                 src="themes/bnet/res/pixel.gif" 
@@ -410,7 +395,7 @@ border=0>
                                 <TD rowSpan=4><IMG height=1 
                                 src="themes/bnet/res/pixel.gif" 
                                 width=10></TD>
-                                <TD align=middle rowSpan=2>
+                                <TD align=center rowSpan=2>
                                 <TABLE 
                                 style="BORDER-RIGHT: #28221c 1px solid; BORDER-TOP: #0c0906 1px solid; BORDER-LEFT: #0c0906 1px solid; BORDER-BOTTOM: #3a332a 1px solid" 
                                 cellSpacing=0 cellPadding=4 width=120 
@@ -418,15 +403,15 @@ border=0>
                                 border=0>
                                 <TBODY>
                                 <TR>
-                                <TD align=middle><SPAN class=rankingData>Rank: 
-                                <B>[[SEXP_1_rank]]<SUP>[[SEXP_1_pow]]</SUP></B></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+                                <TD align=center><SPAN class=rankingData>Rank: 
+                                <B>[[SEXP_1_rank]]<SUP>[[SEXP_ladder_pow]]</SUP></B></SPAN></TD></TR></TBODY></TABLE></TD></TR>
                                 <TR>
                                 <TD><SPAN class=rankingData>Wins:</SPAN></TD>
                                 <TD align=right><B class=small>[[SEXP_1_wins]]</B></TD></TR>
                                 <TR>
                                 <TD><SPAN class=rankingData>Losses:</SPAN></TD>
                                 <TD align=right><B class=small>[[SEXP_1_losses]]</B></TD>
-                                <TD align=middle><SPAN class=rankingData>Last Result:<B class=small>[[SEXP_1_last_game_result]]</B></SPAN></TD></TR>
+                                <TD align=center><SPAN class=rankingData>Last Result:<B class=small>[[SEXP_1_last_game_result]]</B></SPAN></TD></TR>
                                 <TR>
                                 <TD><IMG height=1 
                                 src="themes/bnet/res/pixel.gif" 
@@ -451,7 +436,7 @@ border=0>
                               border=0>
                                 <TBODY>
                                 <TR>
-<TD align=middle><IMG height=1 
+<TD align=center><IMG height=1 
                                 src="themes/bnet/res/pixel.gif" 
                                 width=1></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV>
 			<!----Sroller Text------------------------------------------------------------>
@@ -483,9 +468,9 @@ border=0>
 				<table width="100%"  border="0" cellpadding="0" cellspacing="0" bgcolor="#000000">
 			<tr>
 				<td width="50%">
-					<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="0">
+					<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="#0">
 						<tr>
-							<td width="32"><a href="<?php echo $homepage?>"><img src="themes/bnet/images/main/arrow-left.gif" width="32" height="52" border="0"></a></td>
+							<td width="32"><A href="<?php echo $homepage?>"><img src="themes/bnet/images/main/arrow-left.gif" width="32" height="52" border="0"></a></td>
 							<td background="themes/bnet/images/main/bot-left-bg.gif">
 								<table width="130" height="100%"  border="0" cellpadding="0" cellspacing="0">
 									<TR>
@@ -498,15 +483,15 @@ border=0>
 						</tr>
 					</table>
 				</td>
-				<td width="117" bordercolor="0"><p><a href="http://www.blizzard.com"><img src="themes/bnet/images/main/blizzlogo.gif" width="117" height="52" border="0"></a></p></td>
-				<td width="50%" bordercolor="0">
+				<td width="117" bordercolor="#0"><p><a href="http://www.blizzard.com"><img src="themes/bnet/images/main/blizzlogo.gif" width="117" height="52" border="0"></a></p></td>
+				<td width="50%" bordercolor="#0">
 					<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0">
 						<tr>
 							<td width="90" background="themes/bnet/images/main/right-logo.GIF">&nbsp;</td>
 							<td background="themes/bnet/images/main/bot-right-bg.gif">&nbsp;</td>
 							<td width="15"><img src="themes/bnet/images/main/bot-right.gif" width="15" height="52" border="0"></td>
 						</tr>
-					</table>
+					</table></td>
 				</tr>
 			</table>
 				</td>
@@ -515,5 +500,5 @@ border=0>
 	  </td>
 	</tr>
 </table>
-</Body>
+</BODY>
 </html>
