@@ -24,17 +24,15 @@
 // ----------------------------------------------------------------------
 
 class sql_handle {
-	var $db_connection;
-
+	var $db_connection,$port;
 // ----------------------------------------------------------------------------------------------
 // This is how we connect to DB
 // ----------------------------------------------------------------------------------------------
-	function db_connect($db_hostname, $db_username, $db_password, $db)
+
+	function db_connect($db_hostname, $db_username, $db_password, $db_name)
 	{ global $db_port;
-		$this->db_connection=mysql_connect($db_hostname.":".$db_port, $db_username, $db_password)
-			OR die ("Connection Error to Mysql Server");
-		mysql_select_db($db)
-			OR die("Connection Error to Database");
+		$this->db_connection = pg_connect("host=".$db_hostname." port=".$db_port." dbname=".$db_name." user=".$db_username." password=".$db_password) 
+			OR die ("Connection Error to PostgreSQL Server");
 		return $this->db_connection;
 	}
 
@@ -43,7 +41,7 @@ class sql_handle {
 // ----------------------------------------------------------------------------------------------
 
 	function sql_num_rows($result) {
-		return mysql_num_rows($result);
+		return pg_num_rows($result);
 	}
 
 // ----------------------------------------------------------------------------------------------
@@ -51,7 +49,7 @@ class sql_handle {
 // ----------------------------------------------------------------------------------------------
 
 	function sql_fetch_row($query) {
-		return mysql_fetch_row($query);
+		return pg_fetch_row($query);
 	}
 
 // ----------------------------------------------------------------------------------------------
@@ -59,7 +57,7 @@ class sql_handle {
 // ----------------------------------------------------------------------------------------------
 
 	function sql_fetch_assoc($result) {
-		return mysql_fetch_assoc($result);
+		return pg_fetch_assoc($result);
 	}
 
 // ----------------------------------------------------------------------------------------------
@@ -67,8 +65,8 @@ class sql_handle {
 // ----------------------------------------------------------------------------------------------
 
 	function db_query($db_query) {
-		$result = mysql_query($db_query,$this->db_connection)
-			or die("Query: $db_query  <br /> Error: ".mysql_error()."<br />");
+		$result = pg_query($this->db_connection,$db_query)
+			or die("Query: $db_query  <br /> Error: ".pg_last_error($this->db_connection)."<br />");
 		return $result;
 	}
 
@@ -78,10 +76,10 @@ class sql_handle {
 
 	function print_db_error($string) {
 		if($error_handle == "DIE") {
-			die($string."<br />\n<strong>MySQL Error:</strong>".mysql_error($this->db_connection));
+			die($string."<br />\n<strong>PostgreSQL Error:</strong>".pg_last_error($this->db_connection));
 		}
 		else if($error_handle == "PRINT") {
-			print "<hr />".$string."<br />\n<strong>MySQL Error:</strong>".mysql_error($this->db_connection)."<hr />";
+			print "<hr />".$string."<br />\n<strong>PostgreSQL Error:</strong>".pg_last_error($this->db_connection)."<hr />";
 		}
 	}
 
@@ -90,7 +88,7 @@ class sql_handle {
 // ----------------------------------------------------------------------------------------------
 
 	function db_fetch($db_result) {
-		while($value = mysql_fetch_assoc($db_result)) {
+		while($value = pg_fetch_assoc($db_result)) {
 			$results[] = $value;
 		}
 		return $results;
@@ -102,14 +100,13 @@ class sql_handle {
 // ----------------------------------------------------------------------------------------------
 
 	function db_query_fetch($query) {
-		$result = mysql_query($query,$this->db_connection) or $this->print_db_error("Failed to query Database<br />\nQuery: $query");
+		$result = pg_query($this->db_connection,$query) or $this->print_db_error("Failed to query Database<br />\nQuery: $query");
 		if($result) {
-			for($n=0;$row=mysql_fetch_array($result);$n++) {
+			for($n=0;$row=pg_fetch_array($result);$n++) {
 				$results[$n] = $row;
 			}
 		}
-		else
-			$results = array();
+		else $results = array();
 		return $results;
 	}
 // ----------------------------------------------------------------------------------------------
@@ -118,7 +115,7 @@ class sql_handle {
 
 	function db_disconnect()
 	{
-		mysql_close($this->db_connection);
+		pg_close($this->db_connection);
 	}
 
 // ----------------------------------------------------------------------------------------------
@@ -127,8 +124,8 @@ class sql_handle {
 
 	function db_search($value,$column,$column_want,$table) {
 		$query = "SELECT $column_want FROM $table WHERE `$column` LIKE '$value'";
-		$result = mysql_query($query,$this->db_connection);
-		while($entry = mysql_fetch_assoc($result)) {
+		$result = pg_query($this->db_connection,$query);
+		while($entry = pg_fetch_assoc($result)) {
 			$results[] = $entry;
 		}
 		return $results;

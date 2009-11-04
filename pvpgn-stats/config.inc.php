@@ -29,18 +29,20 @@
 // ---------------------------------------------------------------------------------
 // Database & System Config settings - Key
 //
-//      db_host:           MySQL Database Hostname
-//      db_database:       MySQL Database Name
-//      db_user:           MySQL Username
-//      db_pass:           MySQL Password
-//      db_prefix          MySQL Database Prefix
-//      db_record:         Name of the table with player records in your MySQL DB
-//      db_bnet:           Name of the table with player info`s in your MySQL DB
-//      db_profile:        Name of the table with player profile in your MySQL DB
-//      db_teams:          Name of the table with team records in your MySQL DB
-//      db_friend:         Name of the table with friends records in your MySQL DB
-//      db_counters:       Name of the table with counter records in your MySQL DB
-//      db_d2:             Name of the table with d2ladder records in your MySQL DB
+//      db_type:           Database type (mysql, pgsql, etc.)
+//      db_host:           SQL Server Hostname or IP address
+//      db_port:           SQL Server port
+//      db_database:       SQL Database Name
+//      db_user:           SQL Username
+//      db_pass:           SQL Password
+//      db_prefix          SQL Database Prefix
+//      db_record:         Name of the table with player records in yourSQL DB
+//      db_bnet:           Name of the table with player info`s in your SQL DB
+//      db_profile:        Name of the table with player profile in your SQL DB
+//      db_teams:          Name of the table with team records in your SQL DB
+//      db_friend:         Name of the table with friends records in your SQL DB
+//      db_counters:       Name of the table with counter records in your SQL DB
+//      db_d2:             Name of the table with d2ladder records in your SQL DB
 //
 // *NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*
 // *NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*NEW*
@@ -59,7 +61,9 @@
 
 // System Config settings
 $site_name = "PvPGN server";
+$db_type = "mysql";
 $db_host = "localhost";
+$db_port = 3306; /* 3306 is the most common MySQL port */
 $db_database = "pvpgn";
 $db_user = "pvpgn";
 $db_pass = "pvpgnrocks";
@@ -71,11 +75,11 @@ $db_teams = $db_prefix."team";
 $db_friend = $db_prefix."friend";
 $db_counters = $db_prefix."counters";
 $db_d2 = $db_prefix."d2ladder";
-$homepage = "http://my.server/";
-$ladderroot = "http://my.server/ladder/";
+$homepage = "http://www.myserver.net/";
+$ladderroot = "http://ladder.myserver.net/"; /* can also be something like "http://www.myserver.net/ladder/" */
 
 
-$theme = "default";
+$theme = "bnet";
 
 $use_php_xslt = true; // only change this if you know you have xsltproc installed and not php-xslt
 $xslt_command = "xsltproc"; // for when you don't have php4-xslt but have the xsltproc command or sabcmd
@@ -123,7 +127,7 @@ $default_type = "solo";
 $date_format = " F j - G:i";
 $d2ladder_file = "D:/pvpgn/var/ladders/ladder.D2DV";
 $d2update_time = "3600";
-$stats_version = "2.4.20";
+$stats_version = "2.4.3";
 
 
 // ---------------------------------------------------------------------------------

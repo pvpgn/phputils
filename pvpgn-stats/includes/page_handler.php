@@ -89,7 +89,7 @@ class page_handle {
 				$pos2 = strpos($temp,"]]");
 				$key = substr($temp,$pos+2,$pos2-$pos-2);
 				if(is_int($pos)&&is_int($pos2)) {
-					if ($data[$n][$key]=='') $temp = str_replace("[[$key]]",$this->page_data[$key],$temp);
+					if ($data[$n][$key]=='') $temp = str_replace("[[".$key."]]",$this->page_data[$key],$temp);
 					else $temp = str_replace("[[".$key."]]",$data[$n][$key],$temp);
 				}
 				else$done = true;

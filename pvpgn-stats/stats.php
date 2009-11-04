@@ -26,7 +26,6 @@
 error_reporting (E_ERROR | E_WARNING | E_PARSE);
 require_once("includes/page_handler.php");
 require_once("includes/pvpgn_stats.php");
-include_once("config.inc.php");
 
 $php_ver = PHP_VERSION;
 $php_ver = explode(".",$php_ver);
@@ -43,7 +42,15 @@ else {
 
 foreach(array_keys($GET) as $key) {
 	$$key = $GET[$key];
+	if((stristr($$key,59)) or (stristr($$key,'union select'))) {
+		$hlog = fopen('hackers.log','x+');
+		fwrite($hlog,getenv('REMOTE_ADDR').' or '.getenv('HTTP_X_FORWARDED_FOR').'
+');
+		fclose($hlog);
+		die('sql injection attempt!');
+	}
 }
+include_once("config.inc.php");
 
 $stats = new pvpgn_stats();
 $page = new page_handle();
@@ -101,27 +108,13 @@ $sub_menu['theme_file'] = "submenu_entry.html";
 $game_type = $game."_".$type."_";
 
 if(!isset($sortBy)) {
-	if(strstr($game_type,"SEXP_1")||strstr($game_type,"STAR_1")) {
-		$sortBy = $game_type."rank";
-	}
-	else if(strstr($game_type,"DRTL")) {
-		$sortBy = $game_type."level";
-	}
-	else if(strstr($game_type,"WAR3_0_")) {
-		$sortBy = $game."experience";
-	}
-	else if(strstr($game_type,"WAR3")) {
-		$sortBy = $game_type."rank";
-	}
-	else if(strstr($game_type,"W3XP")) {
-		$sortBy = $game_type."rank";
-	}
-	else if(strstr($game,"D2")) {
-		$sortBy = "experience";
-	}
-	else {
-		$sortBy = $game_type."wins";
-	}
+	if(strstr($game_type,"SEXP_1")||strstr($game_type,"STAR_1")) $sortBy = $game_type."rank";
+	else if(strstr($game_type,"DRTL")) $sortBy = $game_type."level";
+	else if(strstr($game_type,"WAR3_0_")) $sortBy = $game."experience";
+	else if(strstr($game_type,"WAR3")) $sortBy = $game_type."rank";
+	else if(strstr($game_type,"W3XP")) $sortBy = $game_type."rank";
+	else if(strstr($game,"D2")) $sortBy = "experience";
+	else $sortBy = $game_type."wins";
 }
 
 if(!isset($sort_direction)) {
@@ -143,9 +136,7 @@ if(!isset($current_page)) {
 $page_num = $current_page * $page_max;
 
 if($action == "search") {
-	if($user_method == "contains") {
-		$user_search = "%".$user_search."%";
-	}
+	if($user_method == "contains") $user_search = "%".$user_search."%";
 	$stats->user_search($user_search,$game_type);
 	}
 	else if(!isset($user)) {
@@ -153,9 +144,7 @@ if($action == "search") {
 			$stats->d2ladder_update();
 			$stats->load_d2stats($game_type,$sortBy,$sort_direction,$page_num,$page_max);
 	}
-	else {
-		$stats->load_stats($game_type,$sortBy,$sort_direction,$page_num,$page_max);
-	}
+	else $stats->load_stats($game_type,$sortBy,$sort_direction,$page_num,$page_max);
 }
 
 $max_pages=(ceil(($stats->user_count()) / $page_max)) - 1;
@@ -174,32 +163,22 @@ $control_page = "Page: ".($current_page+1)." of ".($max_pages+1);
 
 if(!isset($user)||$user=="") {
 	$display_stats = $stats->get_stats();
-	  if ($display_stats[0]['username']== 'NO SUCH USER'){
-	    $display_stats = "<tr><td bgcolor='#000000' colspan=\"9\"><center><table><tr><td><IMG height=18 src=\"themes/bnet/images/w3tft/unknown.gif\"  width=26></td><td><small>No such user</td></tr></table></small></td></tr>";}
-		else
-		if(count($display_stats) == 0)
-			$display_stats = "<tr><td bgcolor='#111111' colspan=\"9\"><small><center>No users for this game</small></td></tr>";
-		else
-    	   
-    	    $display_stats['theme_file'] = $game_type."entry.html";
-			$layout_file = "stats.layout.html";
-			$page_data = array("content"=>$display_stats,
-				"game_header"=>array(0=>"","theme_file"=>$game_type."main.html"),
-				"game"=>$game,
-				"type"=>$type,
-				"stats_version"=>$stats_version,
-				"site_theme"=>$site_theme,
-				"menu"=>$menu_games,
-				"submenu"=>$sub_menu,
-				"control_first"=>$control_first,
-				"control_prev"=>$control_prev,
-				"control_next"=>$control_next,
-				"control_last"=>$control_last,
-				"control_page"=>$control_page,
-				"control_prev_text"=>$control_prev_text,
-				"homepage"=>$homepage,
-				"ladderroot"=>$ladderroot
-			);
+	if ($display_stats[0]['username']== 'NO SUCH USER') $display_stats = "<tr><td bgcolor='#000000' colspan=\"10\"><center><table><tr><td><IMG height=18 src=\"themes/bnet/images/w3tft/unknown.gif\"  width=26></td><td><small>No such user</small></td></tr></table></center></td></tr>";
+	else if(count($display_stats) == 0) $display_stats = "<tr><td bgcolor='#111111' colspan=\"10\"><small><center>No users for this game</center></small></td></tr>";
+	else $display_stats['theme_file'] = $game_type."entry.html";
+	$layout_file = "stats.layout.html";
+	$page_data = array("content"=>$display_stats,
+	"game_header"=>array(0=>"","theme_file"=>$game_type."main.html"),
+	"game"=>$game,"type"=>$type,
+	"stats_version"=>$stats_version,
+	"site_theme"=>$site_theme,"menu"=>$menu_games,
+	"submenu"=>$sub_menu,"control_first"=>$control_first,
+	"control_prev"=>$control_prev,
+	"control_next"=>$control_next,
+	"control_last"=>$control_last,
+	"control_page"=>$control_page,
+	"control_prev_text"=>$control_prev_text,
+	"homepage"=>$homepage,"ladderroot"=>$ladderroot	);
 }
 else {
 	$stats->load_user_stats($user,$game_type);
@@ -211,7 +190,6 @@ else {
 	"menu"=>$menu_games,"submenu"=>$sub_menu);
 
 }
-
 $page->setup($site_theme,$layout_file,$page_data);
 $page->parse();
 print $page->fetch();

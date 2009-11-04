@@ -23,7 +23,7 @@
 // Tanzania theme author: Tanzania (tanzania@gmx.net)
 // ----------------------------------------------------------------------
 
-include_once("includes/db_handler.php");
+include_once("includes/mysql_handler.php");
 
 class pvpgn_rank {
 	var $db;
@@ -34,7 +34,7 @@ class pvpgn_rank {
 
 	function pvpgn_rank() {
 		global $db_host,$db_user,$db_pass,$db_database;
-		$this->db = new db_handle();
+		$this->db = new sql_handle();
 		$this->db->db_connect($db_host,$db_user,$db_pass,$db_database);
 	}
 

@@ -2,7 +2,7 @@
 #
 # Host: localhost   Database: pvpgn
 # --------------------------------------------------------
-# Server version 4.0.15-nt
+# Server version 4.1.12-nt
 
 
 #
@@ -385,8 +385,10 @@ CREATE TABLE record (
   SEXP_1_rank int(11) default '0',
   SEXP_1_high_rank int(11) default '0',
   WAR3_w3pgrace varchar(128) default NULL,
-  STAR_0_draws varchar(128) default NULL,
-  SEXP_0_draws varchar(128) default NULL,
+  STAR_0_draws int(11) default '0',
+  SEXP_0_draws int(11) default '0',
+  STAR_1_draws int(11) default '0',
+  SEXP_1_draws int(11) default '0',
   SEXP_0_rank int(11) default '0',
   STAR_0_rank int(11) default '0',
   PRIMARY KEY  (uid)
