@@ -1,0 +1,37 @@
+// ----------------------------------------------------------------------
+// Installation for PvPGN Statistics System:
+// http://www.stormzone.ru/
+// ----------------------------------------------------------------------
+//
+//                 UPGRADING FROM PREVIOUS VERSION:
+//
+// 1) Delete all the files from your previous version
+// 2) Delete table d2ladder from previous stats version, cuz we use new table now
+// 2) Follow the new clean installation instructions :p
+//
+// ----------------------------------------------------------------------
+//
+//                     NEW CLEAN INSTALLATION:
+//
+// 1) Copy/Move the pvpgn-stats directory to a place where it can be 
+//    accessed by the web server, rename the folder at your desire.
+// 2) Open config.inc.php in your favorite text editor and edit the
+//    $db_host, $db_database, $db_user and $db_pass fields to reflect
+//    your mysql settings.
+// 3) For Diablo 2 ladder, you need to change $d2ladder_file field in
+//    the config.inc.php and import the d2ladder_new.sql file into your
+//    existing PvPGN DB to store the ladder here. If you are a linux user
+//    you also MUST put this line into your crontab or your Diablo II ladder
+//    won`t work:
+//
+//    0,5,10,15,20,25,30,35,40,45,50,55 * * * * chmod 644 /usr/local/var/ladders/*
+//
+//    Of course change /usr/local/var/ladders to your path to ladder.D2DV
+// 4) If you want to use admin interface, visit this URL:
+//    http://yoursite/pvpgn-stats/admin.php
+//    default username is super_admin and default password is super_stats :)
+// 5) Try it out.
+// 6) You're welcome to take a look at themes/* directory to see how you 
+//    can customize the look of your stats. Enjoy.
+//
+// ----------------------------------------------------------------------

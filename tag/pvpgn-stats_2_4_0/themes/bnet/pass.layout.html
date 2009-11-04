@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>PvPGN Statistics System</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link href="themes/[[site_theme]]/main.css" rel="stylesheet" type="text/css" />
+<LINK href="themes/bnet/res/war3-human-ie.css" type=text/css rel=stylesheet>
+<LINK href="themes/bnet/res/war3-ladder-ranking.css" type=text/css rel=stylesheet>
+
+<BODY bgColor=#000000 leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
+<DIV style="WIDTH: 100%; POSITION: absolute; TOP: 85px; TEXT-ALIGN: center">
+<CENTER>
+
+<SCRIPT language=JavaScript 
+src="themes/bnet/res/layerFunctions.js"></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="themes/bnet/res/detection2.js"></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="themes/bnet/res/detection.js"></SCRIPT>
+
+  </TBODY></div>
+    
+<SCRIPT>
+<!--
+function check(){
+if (document.forms["create_acct"].password.value==""){
+alert("You can`t create account with a blank PASSWORD");
+return false;
+}
+else if (document.forms["create_acct"].username.value==""){
+alert("You can`t create account with a blank USERNAME");
+return false;
+}
+}
+// -->
+</SCRIPT>
+</head>
+<div align="center">
+<p><br><img src="themes/[[site_theme]]/images/pvpgn.jpg" border="0"></p>
+<div style="font-size: 2em;">Password Encrypter</div><br />
+[ <a href="login.php?logout=1">Logout</a> ]
+[ <a href="admin.php?mode=users">User Administration</a> ]
+<!-- [ <a href="admin.php?mode=ranks">Rank Updater</a> ] -->
+<br /><br />
+<form action="admin.php?mode=pass" method="post">
+<table border="0" class='menu'><tr><td>
+<table cellpadding="2" cellspacing="0" border="0">
+<tr><td>Password:</td></tr>
+<tr><td><input type="password" class='boxes' size="40" name="pass2" /></td></tr>
+<tr><td>Result: (Copy this into your $site_pass = "" in config.inc.php)</td></tr>
+<tr><td><input type="text" class='boxes' size="40" value="[[encrypted]]" /></td></tr>
+<tr><td><input type="submit" class='boxes' name="encode" value="Encrypt" /></td></tr>
+</table>
+</td></tr>
+</table>
+</form>
+</div>
+<small>
+<div align="center">RINO Statistics System v[[stats_version]] by <a href="mailto:imeepmeep@yahoo.com?subject=PvPGN-Stats">jfro</a> , <a href="http://www.stormzone.ru" target="_blank">STORM</a>, and <a href="mailto:snaiperx@tutopia.com">Snaiperx</a><br /><br />
+
+<a href="http://www.battle.net" target="_blank">Battle.net</a><br />
+1996 - 2005 Blizzard Entertainment. All rights reserved. Battle.net and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment in the U.S. and/or other countries.
+</small>
+</div>
+</body>
+</html>
