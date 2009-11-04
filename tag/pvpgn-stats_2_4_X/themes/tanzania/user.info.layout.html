@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>PvPGN Statistics System</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link href="themes/[[site_theme]]/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div align="center">
+<p><img src="themes/[[site_theme]]/images/pvpgn.jpg" border="0"></p>
+<table border="0" class='menu'>
+<tr>
+[[menu]]</tr>
+<tr>
+<table border="0" class='submenu'>
+<tr>
+[[submenu]]</tr>
+</table>
+</table>
+</tr>
+<center>
+<form action="index.php?action=search" method="POST">
+<table border="0" class='menu' width="45%"><tr><td>
+<table cellpadding="2" cellspacing="1" width="100%" border="0"><div align="center">
+User search:&nbsp;<input type="text" class='boxes' name="user_search">
+Method:&nbsp;<select class='boxes' name="user_method">
+<option value="contains">Contains</option>
+<option value="exact">Exact</option>
+</select>
+<input type="hidden" class='boxes' name="game" value="[[game]]">
+<input type="hidden" class='boxes' name="type" value="[[type]]">
+<input type="submit" class='boxes' name="user_submit" value="Search">
+</div>
+</table>
+</td></tr>
+</table>
+</form>
+</center>
+<div align="center">
+<table>
+[[content]]
+</table>
+</div>
+<br />
+<div align="center">PvPGN Statistics System v[[stats_version]] by <a href="mailto:imeepmeep@yahoo.com?subject=PvPGN-Stats">jfro</a> and <a href="http://www.stormzone.ru" target="_blank">STORM</a>, theme by <a href="mailto:tanzania@gmx.net">tanzania</a><br /><br />
+<small>
+<a href="http://www.battle.net" target="_blank">Battle.net</a><br />
+1996 - 2003 Blizzard Entertainment. All rights reserved. Battle.net and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment in the U.S. and/or other countries.
+</small>
+</div>
+</body>
+</html>
