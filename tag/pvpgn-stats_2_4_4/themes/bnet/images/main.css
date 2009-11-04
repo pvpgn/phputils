@@ -1,0 +1,97 @@
+/* CSS Document */
+a {
+		color: #FFCC33;
+		text-decoration: none;
+}
+a:hover {	
+		text-decoration: underline
+}
+
+.footer {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		font-style: normal;
+		color: #FFFFFF;
+		background-color: #000000;
+
+}
+
+body {
+		background-color: #000000;
+		scrollbar-face-color: #000000;
+		scrollbar-highlight-color: #999999;
+		scrollbar-shadow-color: #000000;
+		scrollbar-3dlight-color: #000000;
+		scrollbar-arrow-color:  #999999;
+		scrollbar-track-color: #000000;
+		scrollbar-darkshadow-color: #999999;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		color: white;
+}
+
+td {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		line-height: 24px;
+		color: white;
+		background-color: #000000;
+}
+
+td.menu {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		line-height: 24px;
+		color: white;
+		background-color: #222222;
+}
+
+td.submenu {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		line-height: 24px;
+		color: white;
+		background-color: #222222;
+}
+
+th {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		line-height: 24px;
+		color: white;
+		background-color: #444444;
+}
+
+th.top {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 12px;
+		line-height: 24px;
+		color: white;
+		background-color: #222222;
+}
+
+table.content {
+		background-color: #999999;
+}
+
+table.menu {
+		background-color: #999999;
+}
+
+table.submenu {
+		background-color: #999999;
+}
+
+.ALIVE {
+		color: white;
+}
+
+.DEAD {
+		color: red;
+}
+
+.boxes {
+		font-size: 10pt;
+		background-color: #000000;
+		color: #FFFFFF
+}
