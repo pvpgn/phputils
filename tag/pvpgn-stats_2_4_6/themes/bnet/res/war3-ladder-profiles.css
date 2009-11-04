@@ -1,0 +1,94 @@
+TD.rankingOutline {
+	BORDER-RIGHT: #464646 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #464646 1px solid; BORDER-BOTTOM: #464646 1px solid
+}
+TD.rankingHeader {
+	BORDER-RIGHT: #5d5d5d 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #5d5d5d 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 8pt; PADDING-BOTTOM: 3px; BORDER-LEFT: #1e1d1c 1px solid; COLOR: #ffffff; PADDING-TOP: 3px; BORDER-BOTTOM: #1e1d1c 1px solid; FONT-FAMILY: arial,helvetica,sans-serif; BACKGROUND-COLOR: #2e2d2b
+}
+TD.rankingFiller {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #1f1e1d
+}
+TD.rankingRow {
+	BORDER-RIGHT: #000000 0px solid; PADDING-RIGHT: 3px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 3px; FONT-SIZE: 8pt; PADDING-BOTTOM: 3px; BORDER-LEFT: #000000 0px solid; COLOR: #929292; PADDING-TOP: 3px; BORDER-BOTTOM: #000000 0px solid; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-ALIGN: center
+}
+TD.rankingRowAlt {
+	BORDER-RIGHT: #000000 0px solid; PADDING-RIGHT: 3px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: #000000 0px solid; PADDING-TOP: 3px; BORDER-BOTTOM: #000000 0px solid
+}
+SPAN.rankingHeader {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif
+}
+SPAN.rankingData {
+	FONT-SIZE: 8pt; COLOR: #929292; FONT-FAMILY: arial,helvetica,sans-serif
+}
+SPAN.rankingName {
+	FONT-SIZE: 8pt; COLOR: #929292; FONT-FAMILY: arial,helvetica,sans-serif
+}
+#colorRed {
+	COLOR: red
+}
+A.button:link {
+	PADDING-RIGHT: 3px; DISPLAY: block; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; COLOR: #cba300; PADDING-TOP: 3px
+}
+A.button:visited {
+	PADDING-RIGHT: 3px; DISPLAY: block; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; COLOR: #cba300; PADDING-TOP: 3px
+}
+A.button:hover {
+	PADDING-RIGHT: 3px; DISPLAY: block; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; COLOR: #ffffff; PADDING-TOP: 3px; BACKGROUND-COLOR: #565553
+}
+A.button:active {
+	PADDING-RIGHT: 3px; DISPLAY: block; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; COLOR: #ffffff; PADDING-TOP: 3px
+}
+A:link {
+	FONT-WEIGHT: bold; COLOR: #cba300; FONT-FAMILY: arial,helvetica,sans-serif
+}
+A:visited {
+	FONT-WEIGHT: bold; COLOR: #aaaaaa; FONT-FAMILY: arial,helvetica,sans-serif
+}
+A:hover {
+	FONT-WEIGHT: bold; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif
+}
+A:active {
+	FONT-WEIGHT: bold; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif
+}
+A.rankingName:link {
+	COLOR: #cba300
+}
+A.rankingName:visited {
+	COLOR: #cba300
+}
+A.rankingName:hover {
+	COLOR: #cba300; BACKGROUND-COLOR: #565553
+}
+A.rankingName:active {
+	COLOR: #cba300
+}
+TABLE.mainTable {
+	BACKGROUND-POSITION: right 50%; BACKGROUND-IMAGE: url(/war3/images/ladder-revise/right-bg.gif); BACKGROUND-REPEAT: repeat-y
+}
+#levelbarParent {
+	WIDTH: 70px; POSITION: relative; HEIGHT: 1px
+}
+#levelbarChild {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LEFT: 30px; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif; POSITION: absolute; TOP: 1px
+}
+#levelbarChild2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LEFT: 55px; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif; POSITION: absolute; TOP: 4px
+}
+TD.playerStatsHeader {
+	FONT-SIZE: 8pt; COLOR: #929292; FONT-FAMILY: arial,helvetica,sans-serif
+}
+TD.playerStatsData {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-ALIGN: right
+}
+TD.playerStatsDataLeft {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif
+}
+LI.profileReport {
+	FONT-SIZE: 8pt; COLOR: #929292; FONT-FAMILY: arial,helvetica,sans-serif
+}
+OL.profileReport {
+	FONT-SIZE: 8pt; COLOR: #929292; FONT-FAMILY: arial,helvetica,sans-serif
+}
+#additionalInfo {
+	BORDER-RIGHT: #4e4e4e 0px solid; PADDING-RIGHT: 2px; BORDER-TOP: #5c5c5c 0px solid; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; SCROLLBAR-HIGHLIGHT-COLOR: #666666; OVERFLOW: auto; BORDER-LEFT: #5c5c5c 0px solid; WIDTH: 245px; SCROLLBAR-SHADOW-COLOR: #383838; SCROLLBAR-3DLIGHT-COLOR: #161616; SCROLLBAR-ARROW-COLOR: #666666; PADDING-TOP: 2px; BORDER-BOTTOM: #4e4e4e 0px solid; SCROLLBAR-DARKSHADOW-COLOR: black; SCROLLBAR-BASE-COLOR: #282724; POSITION: relative; HEIGHT: 32px; BACKGROUND-COLOR: #000000
+}
+

@@ -1,0 +1,29 @@
+// ----------------------------------------------------------------------
+// Installation for PvPGN Statistics System:
+// 
+// ----------------------------------------------------------------------
+//
+//                 UPGRADING FROM PREVIOUS VERSION:
+//
+// 1) Delete all the files from your previous version
+// 2) Delete table d2ladder from previous stats version, cuz we use new table now
+// 2) Follow the new clean installation instructions :P
+//
+// ----------------------------------------------------------------------
+//
+//                     NEW CLEAN INSTALLATION:
+//
+// 1) Copy/Move the pvpgn-stats directory to a place where it can be 
+//    accessed by the web server, rename the folder at your desire.
+// 2) Open config.inc.php in your favorite text editor and edit the
+//    $db_host, $db_database, $db_user, $db_pass and $db_prefix fields to reflect
+//    your mysql settings, $homepage and $ladderroot to reflect the path to your
+//    server and stats. You can also change other settings of your choise.
+// 3) If you're using the old pre-1.7.9 sql layout import the STATS.sql and
+//    d2ladder_new.sql files.If you already have tables created by pvpgn you have
+//    to edit them manually to look like the ones in STATS.sql file. Or you
+//    could remove them and import it.
+// 4) You're welcome to take a look at themes/* directory to see how you 
+//    can customize the look of your stats. Enjoy.
+//
+// ----------------------------------------------------------------------
