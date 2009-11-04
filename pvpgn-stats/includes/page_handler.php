@@ -18,6 +18,7 @@
 // To read the license please visit http://www.gnu.org/copyleft/gpl.html
 // ----------------------------------------------------------------------
 // Original author: jfro (imeepmeep@hotmail.com)
+// Author from 2.3.20: Snaiperx (http://www.rino.com.co/)
 // Author from 2.3.16: STORM (http://www.stormzone.ru/)
 // Tanzania theme author: Tanzania (tanzania@gmx.net)
 // ----------------------------------------------------------------------
@@ -47,7 +48,7 @@ class page_handle {
 	}
 
 // ----------------------------------------------------------------------------------------------
-// This is how we parse
+// This is how we parse:Change [[]] variables to real info in stats layout
 // ----------------------------------------------------------------------------------------------
 
 	function parse() {
@@ -88,7 +89,10 @@ class page_handle {
 				$pos2 = strpos($temp,"]]");
 				$key = substr($temp,$pos+2,$pos2-$pos-2);
 				if(is_int($pos)&&is_int($pos2)) {
-					$temp = str_replace("[[".$key."]]",$data[$n][$key],$temp);
+					if ($data[$n][$key]=='') {
+							$temp = str_replace("[[$key]]",$this->page_data[$key],$temp);}
+					else {		
+					$temp = str_replace("[[".$key."]]",$data[$n][$key],$temp);}
 				}
 				else
 					$done = true;
