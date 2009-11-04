@@ -214,12 +214,12 @@ class pvpgn_stats {
 	}
 
 	function clantag_to_str($userid) {
-		$query = "SELECT cid FROM clanmember WHERE uid = '".$userid."' LIMIT 1";
+		$query = "SELECT cid FROM pvpgn_clanmember WHERE uid = '".$userid."' LIMIT 1";
 		$usr_results = $this->data->db_query($query);
 		$clanid = $this->data->sql_fetch_assoc($usr_results);
 		
 		if ($clanid['cid'] != '') {
-			$query = "SELECT short FROM clan WHERE cid = '".$clanid['cid']."' LIMIT 1";
+			$query = "SELECT short FROM pvpgn_clan WHERE cid = '".$clanid['cid']."' LIMIT 1";
 			$usr_results = $this->data->db_query($query);
 			$clantag = $this->data->sql_fetch_assoc($usr_results);
 			$tag= pack("H*",dechex($clantag['short']));
@@ -461,7 +461,8 @@ class pvpgn_stats {
 // ----------------------------------------------------------------------------------------------
 
 	function d2ladder_update() {
-		global $d2ladder_file,$d2update_time,$game,$type;
+		
+		global $d2ladder_file,$d2update_time,$game,$type,$db_d2;
 		$ranking = new pvpgn_rank();
 		$S_INIT = 0x1;
 		$S_EXP  = 0x20;
@@ -494,7 +495,12 @@ class pvpgn_stats {
 		$last_update = $this->data->sql_fetch_assoc($result);
 		$now = time();
 		if($d2update_time != 0) {
-			if(($now >= ($last_update['d2ladder_time'] + $d2update_time)) || ($last_update['d2ladder_time'] == 0)) {
+			if($last_update['d2ladder_time'] == ''){	
+				$update = true;
+				$query = "INSERT INTO `counters` (`d2ladder_time`) VALUES ('$now')";
+				$result = $this->data->db_query($query);
+			}	
+			else if(($now >= ($last_update['d2ladder_time'] + $d2update_time)) || ($last_update['d2ladder_time'] == 0)){	
 				$update = true;
 				$query = "UPDATE counters SET d2ladder_time = $now LIMIT 1";
 				$result = $this->data->db_query($query);
@@ -511,54 +517,70 @@ class pvpgn_stats {
 			$size = $size - 8;
 			$checksumi = $this->get_int($checksum);
 			$maxtypei = $this->get_int($maxtype);
-			for($n=0;$n<$maxtypei;$n++) {
+			
+			$types=array();	
+			
+			while (!feof ($fp) && ($maxtypei>($type+1))) {
+				$typ_a=array();
 				$type = $this->get_int(fread($fp,4));
-				$offset = $this->get_int(fread($fp,4));
-				$number = $this->get_int(fread($fp,4));
-				$size = $size - 12;
+				$typ_a[offset]=$this->get_int(fread($fp,4));
+				$typ_a[records]=$this->get_int(fread($fp,4));
+				$types[$type]=$typ_a;
 			}
-			for($n=0;$size>0;$n++) {
-				$xp = $this->get_int(fread($fp,4));
-				$status_hex = fread($fp,2);
-				$status = $this->get_int($status_hex);
-				$level = $this->get_int(fread($fp,1));
-				$class = $this->get_int(fread($fp,1));
-				$charname = fread($fp,16);
-				$size = $size - 24;
-				$str_status = array();
-				if($status & $S_EXP) $game = "D2XP";
-				else $game = "D2DV";
-				if($status & $S_HC) {
-					$hc = "HC";
-					if($status & $S_DEAD) $dead = "DEAD";
-					else $dead = "ALIVE";
-				}
-				else $hc = "SC";
-	
-				$difficulty = (($status >> 0x08) & 0x0f) / 5;
-				$difficulty = floor($difficulty);
-				$charname = trim($charname);
-				$prefix = $diff[$game][$difficulty][$hc][$sexes[$classes[$class]]];
-				$query = "SELECT * FROM d2ladder WHERE charname = '$charname'";
-				$result = $this->data->db_query($query);
-				$row = $this->data->db_fetch($result);
+			$size = (filesize($d2ladder_file) - ftell ($fp));
 
-				if($this->data->sql_num_rows($result) == 0) {
-					$query = "INSERT INTO d2ladder (`charname`,`title`,`level`,`class`,`experience`,`type`,`dead`,`game`) VALUES ('$charname','$prefix','$level','$classes[$class]','$xp','$hc','$dead','$game')";
-					$result = $this->data->db_query($query);
-				}
-				else {
-					if($row['experience'] < $xp) {
-						$query = "UPDATE d2ladder SET experience=$xp, title='$prefix', level=$level, class='".$classes[$class]."', type='$hc', dead='$dead', game='$game' WHERE charname='$charname'";
-						$result = $this->data->db_query($query);
-						if($result != 1) {
-							print "Failed UPDATE Query: $query <br />";
-						}
+			$ladder=array();
+			foreach ($types as $type => $typ_a) {
+				 for($i=0;$i<=($typ_a[records]-1);$i++){
+					
+					$offset=($i*24+$typ_a[offset]);
+					fseek($fp, $offset, SEEK_SET);
+					$xp_r = fread($fp,4);
+					$status_r = fread($fp,2);
+					$level_r = fread($fp,1);
+					$class_r = fread($fp,1);
+					$charname_r = fread($fp,16);
+					
+					if(trim($charname_r)!==''){
+					$charakter=array();
+					$status=$this->get_int($status_r);
+
+						$charakter[xp]=$this->get_int($xp_r);
+						$charakter[level]=$this->get_int($level_r);
+						$charakter[classs]=$classes[$this->get_int($class_r)];
+						$charakter[game]=($status & $S_EXP)?"D2XP":"D2DV";
+						$charakter[hc]=($status & $S_HC)?"HC":"SC";
+						if($status & $S_HC) $charakter[dead]=(($status & $S_DEAD))?"DEAD":"ALIVE";
+						$charakter[difficulty]=floor((($status >> 0x08) & 0x0f) / 5);
+						$charakter[prefix]=$diff[$charakter[game]][$charakter[difficulty]][$charakter[hc]][$sexes[$charakter[classs]]];
+						$charakter[charname]=trim($charname_r);
+						$ladder[$type][]=$charakter;
 					}
 				}
+
 			}
+			foreach ($ladder as $type => $charakters) {
+				foreach ($charakters as $charakter) {
+					$query = "SELECT * FROM `$db_d2` WHERE charname = '$charakter[charname]'";
+					$result = $this->data->db_query($query);
+					$row = $this->data->db_fetch($result);
+				
+					if($this->data->sql_num_rows($result) == 0) {
+						$query = "INSERT INTO `$db_d2` (`charname`,`title`,`level`,`class`,`experience`,`type`,`dead`,`game`) VALUES ('$charakter[charname]','$charakter[prefix]','$charakter[level]','$charakter[classs]','$charakter[xp]','$charakter[hc]','$charakter[dead]','$charakter[game]')";
+						$result = $this->data->db_query($query);
+					}else{
+						$query = "UPDATE `$db_d2` SET experience=$charakter[xp], title='$charakter[prefix]', level=$charakter[level], class='".$charakter[classs]."', type='$charakter[hc]', dead='$charakter[dead]', game='$charakter[game]' WHERE charname='$charakter[charname]'";
+						$result = $this->data->db_query($query);
+							if($result != 1) {
+								print "Failed UPDATE Query: $query <br />";
+							}
+					}
+				}
+				$ranking->update_ranks($charakter[game],$charakter[hc]);
+			}
+	
 		}
-		$ranking->update_ranks($game,$type);
+
 	}
 
 // ----------------------------------------------------------------------------------------------
@@ -566,14 +588,15 @@ class pvpgn_stats {
 // ----------------------------------------------------------------------------------------------
 
 	function load_d2stats($game,$sort_by,$sort_direction,$start,$stop) {
+		global $db_d2;
 		//$this->stats->d2ladder_update();
 		list($game,$type,$junk) = explode("_",$game);
-		$query = "SELECT * FROM d2ladder WHERE game = '$game' and type='$type' ORDER BY $sort_by $sort_direction LIMIT $start,$stop";
+		$query = "SELECT * FROM  $db_d2 WHERE game = '$game' and type='$type' ORDER BY $sort_by $sort_direction LIMIT $start,$stop";
 		$result = $this->data->db_query($query);
 		//print 'hola '.$stop;
 		$this->stats = $this->data->db_fetch($result);
 		$this->game = $game;
-		$temp = $this->data->sql_fetch_row($this->data->db_query("SELECT COUNT(*) FROM d2ladder WHERE game='$game' and type='$type'"));
+		$temp = $this->data->sql_fetch_row($this->data->db_query("SELECT COUNT(*) FROM $db_d2 WHERE game='$game' and type='$type'"));
 		$this->user_count = $temp[0];
 		//print 'hola '.$this->user_count;
 		for($n=0;$n<count($this->stats);$n++) {

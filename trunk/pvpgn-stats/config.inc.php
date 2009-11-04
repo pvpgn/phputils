@@ -63,10 +63,10 @@ $site_name = "PvPGN server";
 $db_type = "mysql";
 $db_host = "127.0.0.1";
 $db_port = 3306; /* 3306 is the most common MySQL port */
-$db_database = "pvpgn";
-$db_user = "pvpgn";
-$db_pass = "pvpgn_rocks";
-$db_prefix = "";
+$db_database = "PvPGN";
+$db_user = "PvPGN";
+$db_pass = "pvpgnp_password";
+$db_prefix = "pvpgn_";
 $db_record = $db_prefix."Record";
 $db_bnet = $db_prefix."BNET";
 $db_profile = $db_prefix."profile";
@@ -74,17 +74,17 @@ $db_teams = $db_prefix."team";
 $db_friend = $db_prefix."friend";
 $db_counters = $db_prefix."counters";
 $db_d2 = $db_prefix."d2ladder";
-$homepage = "http://www.myserver.net/";
-$ladderroot = "http://ladders.myserver.net/"; /* can also be something like "http://www.myserver.net/ladder/" */
+$homepage = "http://www.myserver.net";
+$ladderroot = "http://www.myserver.net/ladder/"; /* can also be something like "http://www.myserver.net/ladder/" */
 
 
 $theme = "bnet";
 
-$use_php_xslt = true; // only change this if you know you have xsltproc installed and not php-xslt
+$use_php_xslt = false; // only change this if you know you have xsltproc installed and not php-xslt
 $xslt_command = "xsltproc"; // for when you don't have php4-xslt but have the xsltproc command or sabcmd
 
 // set pvpgn_dir to where you pvpgn directory is, include trailing slash
-$pvpgn_dir = "D:/pvpgn/";
+$pvpgn_dir = "/usr/local/";
 $ladders_dir = $pvpgn_dir."var/ladders/";
 
 $w3ladder_xsl_file = getcwd()."/themes/$theme/w3ladder.xsl";
@@ -124,9 +124,9 @@ $page_max = "50";
 $default_game = "W3XP";
 $default_type = "solo";
 $date_format = " F j - G:i";
-$d2ladder_file = "/usr/local/pvpgn-1.8.0/var/ladders/ladder.D2DV";
+$d2ladder_file = "/usr/local/var/ladders/ladder.D2DV";
 $d2update_time = "3600";
-$stats_version = "2.4.5";
+$stats_version = "2.4.6";
 
 // ---------------------------------------------------------------------------------
 // Administration Interface settings
@@ -150,7 +150,7 @@ $default_sort_dir = "DESC";
 //
 // ---------------------------------------------------------------------------------
 
-$pvpgn_users = "/usr/local/pvpgn/var/users";
+$pvpgn_users = "/usr/local/var/users";
 $use_files = false;
 
 // ---------------------------------------------------------------------------------
