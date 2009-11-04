@@ -2,6 +2,11 @@
 // Changelog for PvPGN Statistics System
 // 
 // ----------------------------------------------------------------------
+What's New (v2.4.6) 26/06/2006:
+	-Fixed bug in function d2ladder_update() - function stop created Diablo 2 (noEXP) Amazon charakter ghost :)
+	-Optimalized function d2ladder_update() - this function is much more faster
+	-Fixed bug in ranking Diablo2 charakters
+	-Completly rebuilded STATS.sql and d2ladder_new.sql
 What's New (v2.4.5) 26/06/2006:
 	-Added Rating column to StarCraft and BroodWar Ladder Games
 	-Fixed few of hrml errors
