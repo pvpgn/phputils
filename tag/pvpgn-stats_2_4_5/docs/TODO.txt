@@ -1,0 +1,6 @@
+//--------------------------------------------------\\
+//--      PvPGN Statistics system task list!      --\\
+//--------------------------------------------------\\
+
+26.09.2005:
+- Since 1.7.9 version of PvPGN includes a complete change in the sql layout the stats system must be made compatible with it. Expect a new major release. in the next few months.

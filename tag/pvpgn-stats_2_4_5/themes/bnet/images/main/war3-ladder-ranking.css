@@ -1,0 +1,100 @@
+TD.rankingOutline {
+	BORDER-RIGHT: #464646 1px solid; BORDER-TOP: #464646 1px solid; BORDER-LEFT: #464646 1px solid; BORDER-BOTTOM: #464646 1px solid
+}
+TD.rankingHeader {
+	BORDER-RIGHT: #5d5d5d 1px solid; BORDER-TOP: #5d5d5d 1px solid; FONT-SIZE: 8pt; BORDER-LEFT: #1e1d1c 1px solid; COLOR: #cba300; BORDER-BOTTOM: #1e1d1c 1px solid; FONT-FAMILY: arial,helvetica,sans-serif; BACKGROUND-COLOR: #2e2d2b; TEXT-ALIGN: center
+}
+TD.rankingFiller {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; FONT-SIZE: 8pt; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: arial,helvetica,sans-serif; BACKGROUND-COLOR: #1f1e1d; TEXT-ALIGN: center
+}
+TD.rankingRow {
+	BORDER-RIGHT: #000000 0px solid; PADDING-RIGHT: 3px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 9pt; PADDING-BOTTOM: 3px; BORDER-LEFT: #000000 0px solid; COLOR: #ffffff; PADDING-TOP: 3px; BORDER-BOTTOM: #000000 0px solid; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-ALIGN: center
+}
+TD.rankingRowLeft {
+	BORDER-RIGHT: #000000 0px solid; PADDING-RIGHT: 3px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 9pt; PADDING-BOTTOM: 3px; BORDER-LEFT: #000000 0px solid; COLOR: #ffffff; PADDING-TOP: 3px; BORDER-BOTTOM: #000000 0px solid; FONT-FAMILY: arial,helvetica,sans-serif
+}
+TD.rankingRowRight {
+	BORDER-RIGHT: #000000 0px solid; PADDING-RIGHT: 3px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 9pt; PADDING-BOTTOM: 3px; BORDER-LEFT: #000000 0px solid; COLOR: #ffffff; PADDING-TOP: 3px; BORDER-BOTTOM: #000000 0px solid; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-ALIGN: right
+}
+TD.rankingRowAlt {
+	BORDER-RIGHT: #000000 0px solid; PADDING-RIGHT: 3px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 9pt; PADDING-BOTTOM: 3px; BORDER-LEFT: #000000 0px solid; COLOR: #ffffff; PADDING-TOP: 3px; BORDER-BOTTOM: #000000 0px solid; FONT-FAMILY: arial,helvetica,sans-serif
+}
+TD.ranking {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-ALIGN: center
+}
+SPAN.rankingName {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #cba300; FONT-FAMILY: arial,helvetica,sans-serif
+}
+#colorRed {
+	COLOR: red
+}
+A.button:link {
+	PADDING-RIGHT: 3px; DISPLAY: block; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; COLOR: #cba300; PADDING-TOP: 3px
+}
+A.button:visited {
+	PADDING-RIGHT: 3px; DISPLAY: block; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; COLOR: #cba300; PADDING-TOP: 3px
+}
+A.button:hover {
+	PADDING-RIGHT: 3px; DISPLAY: block; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; COLOR: #ffffff; PADDING-TOP: 3px; BACKGROUND-COLOR: #565553
+}
+A.button:active {
+	PADDING-RIGHT: 3px; DISPLAY: block; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; COLOR: #ffffff; PADDING-TOP: 3px
+}
+A:link {
+	FONT-WEIGHT: bold; COLOR: #cba300; FONT-FAMILY: arial,helvetica,sans-serif
+}
+A:visited {
+	FONT-WEIGHT: bold; COLOR: #cba300; FONT-FAMILY: arial,helvetica,sans-serif
+}
+A:hover {
+	FONT-WEIGHT: bold; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif
+}
+A:active {
+	FONT-WEIGHT: bold; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif
+}
+A.rankingName:link {
+	COLOR: #cba300
+}
+A.rankingName:visited {
+	COLOR: #cba300
+}
+A.rankingName:hover {
+	COLOR: #cba300; BACKGROUND-COLOR: #565553
+}
+A.rankingName:active {
+	COLOR: #cba300
+}
+A.ranking:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-DECORATION: none
+}
+A.ranking:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif
+}
+A.ranking:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif; TEXT-DECORATION: underline
+}
+A.ranking:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif
+}
+TABLE.mainTable {
+	BACKGROUND-POSITION: right 50%; BACKGROUND-IMAGE: url(/war3/images/ladder-revise/right-bg.gif); BACKGROUND-REPEAT: repeat-y
+}
+TABLE.expOutline {
+	BORDER-RIGHT: #5a5d5a 1px solid; BORDER-TOP: #5a5d5a 1px solid; BORDER-LEFT: #5a5d5a 1px solid; BORDER-BOTTOM: #5a5d5a 1px solid; BACKGROUND-COLOR: #000000
+}
+#levelbarParent {
+	WIDTH: 70px; POSITION: relative; HEIGHT: 1px
+}
+#levelbarChild {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LEFT: 30px; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif; POSITION: absolute; TOP: 1px
+}
+#levelbarChild2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LEFT: 55px; COLOR: #ffffff; FONT-FAMILY: arial,helvetica,sans-serif; POSITION: absolute; TOP: 4px
+}
+P.info {
+	FONT-SIZE: 10pt; COLOR: #ab9364; FONT-FAMILY: arial,helvetica,sans-serif
+}
+A.button:hover {
+
+	PADDING-RIGHT: 3px; DISPLAY: block; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; COLOR: #cba300; PADDING-TOP: 3px
+}

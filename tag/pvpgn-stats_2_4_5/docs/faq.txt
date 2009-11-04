@@ -1,0 +1,24 @@
+// ----------------------------------------------------------------------
+// F.A.Q. for PvPGN Statistics System
+// http://www.stormzone.ru/
+// ----------------------------------------------------------------------
+
+ Q - Question
+ A - Answer
+
+   Q: I have read all the FAQ but i still have problems with the stats, what else can i do ?
+   A: Well, if you still have any problems, that means that you have either dumb PHP
+      configuration and(or) too old PHP version. The best idea would be to upgrade your PHP
+      to the latest stable version (4.3.2 at the moment), and use php.ini-dist as an example
+      of your configuration file. Then I can give you a 99% guarantee that everything will work.
+  
+   Q: I found a bug in the stats and(or) want to suggest some features, how can i do it ?
+   A: Go to the forums.pvpgn.org, register and leave message in the forum in the PvPGN
+      Statistics System section or find me in the irc://irc.pvpgn.org as STORM and report
+      what you wanted.
+      !NEW! Now you can also contact Katz in the pvpgn forums for bug reports and feature
+      suggestions.
+
+   Q: What is the address to pvpgn's forums ?
+   A: The address is http://forums.pvpgn.org/ . In case it changes visit http://www.pvpgn.org/
+      or use Google.
