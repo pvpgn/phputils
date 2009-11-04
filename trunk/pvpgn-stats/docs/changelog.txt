@@ -1,20 +1,43 @@
 // ----------------------------------------------------------------------
 // Changelog for PvPGN Statistics System
-// http://www.stormzone.ru/
+// 
 // ----------------------------------------------------------------------
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!	NOTE: 2.3.19 is the last release of the PvPGN Stats as it is now. I am   !!
-!!	starting to work on the new, more configurable and better stats system,  !!
-!!	i haven`t decided in what language it will be written yet, it can be     !!
-!!	only PHP or C++ and PHP or something else... i don`t know yet, but there !!
-!!	will be NO MORE releases of the PvPGN Statistics System as it is now,    !!
-!!	2.3.19 is the last one. So don`t expect new releases of it, any support  !!
-!!	and so on, at least by ME, maybe someone else will continue working on   !!
-!!	it, but I am starting to work on absolutely NEW stats system, so please  !!
-!!	don`t bother me with this one.                                           !!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+What's New (v2.4.5) 26/06/2006:
+	-Added Rating column to StarCraft and BroodWar Ladder Games
+	-Fixed few of hrml errors
+	-Added User page for Diablo game
+	-Completly rebuilded RINO-SQL.sql, now named STATS.sql
+	-Optimalized few images
+What's New (v2.4.4) 15/11/2005:
+	-Optimalized build_other() function
+	-Added new function for pows
+	-Fixed filenames for unix based systems
+	-Added rank for Diablo 1 and WarCraft 2 Games
+	-Added W2BN_0_rank and DTRL_0_rank columns in RINO-SQL.sql
+	-Added War 2 BNE to menu
+What's New (v2.4.3) 10/10/2005:
+	-Many HTML fixes by pelish.
+	-Fixed some potential math problems by pelish.
+	-Added PostgreSQL support(experimental).
+	-Added SEXP_1_draws and STAR_1_draws columns in RINO-SQL.sql
+What's New (v2.4.2) 26/09/2005:
+	-Fix some CSS errors in starcraft and broodwar user stats that were expanding the page.
+	-Fixed lots of html errors thanks to pelish
+	-Warcraft 2 Battle.net pages fixed by pelish 
+	-Fixed version check to accept php5 and above
+	-Fixed minor bug in build_other() function
+	-Added fast game switching for user stats
+What's New (v2.4.00)
+	UNDOCUMENTED
+What's New (v2.3.20a) 29/03/2004 :
+	- New bnet theme 
+	- Fix some errors of XP' bar in solo,at,ffa Its not calculate correctly 
+	- FFa support in user's profile 
+	- Clan id support
+	- PvPGN Web Registration System (thx to U-238)
+	- PvPGN Server Status Script(thx to U-238)
+	- Scripts for reset accounts
+	- Other improvements 
 What's New (v2.3.19) 19/08/2003:
 	- fixed errors appeared in login.php and pvpgn_stats.php for some users with dumb php configuration
 	- added link "Back to the stats" to the login.php so u don`t have to type anything now to get back

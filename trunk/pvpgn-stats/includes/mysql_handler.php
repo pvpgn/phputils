@@ -1,7 +1,7 @@
 <?php
 // ----------------------------------------------------------------------
 // Player -vs- Player Gaming Network Statistics System
-// http://www.stormzone.ru/
+// http://pvpgn.spfree.net/
 // ----------------------------------------------------------------------
 // LICENSE
 //
@@ -17,6 +17,7 @@
 //
 // To read the license please visit http://www.gnu.org/copyleft/gpl.html
 // ----------------------------------------------------------------------
+// Author from 2.4.4: Pelish (pelish@gmail.com)
 // Original author: jfro (imeepmeep@hotmail.com)
 // Author from 2.3.20: Snaiperx (http://www.rino.com.co/)
 // Author from 2.3.16: STORM (http://www.stormzone.ru/)

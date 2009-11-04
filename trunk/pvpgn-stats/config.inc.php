@@ -1,8 +1,7 @@
 <?php
 // ----------------------------------------------------------------------
 // Player -vs- Player Gaming Network Statistics System
-// http://www.stormzone.ru/
-// http://www.rino.com.co/
+// http://pvpgn.spfree.net/
 // ----------------------------------------------------------------------
 // LICENSE
 //
@@ -18,12 +17,12 @@
 //
 // To read the license please visit http://www.gnu.org/copyleft/gpl.html
 // ----------------------------------------------------------------------
+// Author from 2.4.4: Pelish (pelish@gmail.com)
 // Original author: jfro (imeepmeep@hotmail.com)
 // Author from 2.3.20: Snaiperx (http://www.rino.com.co/)
 // Author from 2.3.16: STORM (http://www.stormzone.ru/)
 // Tanzania theme author: Tanzania (tanzania@gmx.net)
 // ----------------------------------------------------------------------
-
 
 
 // ---------------------------------------------------------------------------------
@@ -125,9 +124,9 @@ $page_max = "50";
 $default_game = "W3XP";
 $default_type = "solo";
 $date_format = " F j - G:i";
-$d2ladder_file = "/usr/local/pvpgn-1.7.8/var/ladders/ladder.D2DV";
+$d2ladder_file = "/usr/local/pvpgn-1.8.0/var/ladders/ladder.D2DV";
 $d2update_time = "3600";
-$stats_version = "2.4.4";
+$stats_version = "2.4.5";
 
 // ---------------------------------------------------------------------------------
 // Administration Interface settings
@@ -155,6 +154,5 @@ $pvpgn_users = "/usr/local/pvpgn/var/users";
 $use_files = false;
 
 // ---------------------------------------------------------------------------------
-// END of config.inc file
-
+// END of conf file.
 ?>

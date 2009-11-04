@@ -6,20 +6,6 @@
  Q - Question
  A - Answer
 
-   Q: How can i change default login/password for admin interface ?
-   A: It`s easy. Login to the admin interface with default values (super_admin/super_stats)
-      then click Password Encrypter link, type your password in the first field and click
-      Encrypt button. Now open config.inc.php find $site_user and $site_pass fields. Type
-      your new username and encrypted password here, save your changes. That`s all.
-
-   Q: I get this error:
-        Query: UPDATE counters SET d2ladder_time = 1059899646 LIMIT 1 
-        Error: Unknown column 'd2ladder_time' in 'field list'
-      when i try to view Diablo II/LoD stats, what`s wrong ?
-   A: You didn`t import d2ladder_new.sql in your PvPGN DB or you have old version of this
-      table from 2.3.16 pvpgn-stats version, go and reread UPGRADE section in the install
-      instructions.
-
    Q: I have read all the FAQ but i still have problems with the stats, what else can i do ?
    A: Well, if you still have any problems, that means that you have either dumb PHP
       configuration and(or) too old PHP version. The best idea would be to upgrade your PHP
@@ -27,6 +13,12 @@
       of your configuration file. Then I can give you a 99% guarantee that everything will work.
   
    Q: I found a bug in the stats and(or) want to suggest some features, how can i do it ?
-   A: Go to the www.stormzone.ru, register and leave message in the forum in the PvPGN
+   A: Go to the forums.pvpgn.org, register and leave message in the forum in the PvPGN
       Statistics System section or find me in the irc://irc.pvpgn.org as STORM and report
       what you wanted.
+      !NEW! Now you can also contact Katz in the pvpgn forums for bug reports and feature
+      suggestions.
+
+   Q: What is the address to pvpgn's forums ?
+   A: The address is http://forums.pvpgn.org/ . In case it changes visit http://www.pvpgn.org/
+      or use Google.
