@@ -1,7 +1,7 @@
 <?php
 // ----------------------------------------------------------------------
 // Player -vs- Player Gaming Network Statistics System
-// http://www.stormzone.ru/
+// http://pvpgn.spfree.net/
 // ----------------------------------------------------------------------
 // LICENSE
 //
@@ -17,6 +17,7 @@
 //
 // To read the license please visit http://www.gnu.org/copyleft/gpl.html
 // ----------------------------------------------------------------------
+// Author from 2.4.4: Pelish (pelish@gmail.com)
 // Original author: jfro (imeepmeep@hotmail.com)
 // Author from 2.3.20: Snaiperx (http://www.rino.com.co/)
 // Author from 2.3.16: STORM (http://www.stormzone.ru/)
@@ -255,12 +256,15 @@ class pvpgn_stats {
 				$temp[$game.'total_perc'] = sprintf("%2.2f",($temp[$game.'total_wins']/($temp[$game.'total_wins'] + $temp[$game.'total_losses']))*100);
 			}
 			else $temp[$game.'total_perc'] = "0.00";
+			SetType($temp[$game.'total_wins'],String);
+			SetType($temp[$game.'total_losses'],String);
+			SetType($temp[$game.'total_perc'],String);
 		}
 		return $temp;
 	}
 
 // ----------------------------------------------------------------------------------------------
-// This is how we get user wins
+// This is how we get user wins and how we set null things
 // ----------------------------------------------------------------------------------------------
 
 	function get_perc($user) {
@@ -269,10 +273,10 @@ class pvpgn_stats {
 		if (($game == "SEXP_")||($game == "STAR_")||($game == "W2BN_")) {
 			$s_game = substr($temp_game,0,5);
 			for($i=0;$i<2;$i++) {
-				if(count($user[$s_game.$i.'_losses']) == 0) $temp[$s_game.$i.'_losses'] = 0;
-				if(count($user[$s_game.$i.'_wins']) == 0) $temp[$s_game.$i.'_wins'] = 0;
-				if(count($user[$s_game.$i.'_draws']) == 0) $temp[$s_game.$i.'_draws'] = 0;
-				if(count($user[$s_game.$i.'_disconnects']) == 0) $temp[$s_game.$i.'_disconnects'] = 0;
+				if(count($user[$s_game.$i.'_losses']) == 0 ) $temp[$s_game.$i.'_losses'] = '0';
+				if(count($user[$s_game.$i.'_wins']) == 0) $temp[$s_game.$i.'_wins'] = '0';
+				if(count($user[$s_game.$i.'_draws']) == 0) $temp[$s_game.$i.'_draws'] = '0';
+				if(count($user[$s_game.$i.'_disconnects']) == 0) $temp[$s_game.$i.'_disconnects'] = '0';
 				$total = ($user[$s_game.$i.'_wins'])+($user[$s_game.$i.'_losses'])+($user[$s_game.$i.'_draws'])+($user[$s_game.$i.'_disconnects']);
 				if($total != 0) $temp[$s_game.$i.'_perc']=sprintf("%2.2f",($user[$s_game.$i.'_wins']/($total))*100);
 				else $temp[$s_game.$i.'_perc'] = "0.00";
@@ -322,7 +326,7 @@ class pvpgn_stats {
 	}
 
 // ----------------------------------------------------------------------------------------------
-// This is how we build Diablo I stats and also some WAR3 & W3XP images routine
+// This is how we build stats for DRTL, STAR, SEXP, W2BN, WAR3, W3XP
 // ----------------------------------------------------------------------------------------------
 
 	function build_other() {
@@ -341,7 +345,11 @@ class pvpgn_stats {
 			if ($game == "DRTL_") {
 				$d1_classes = array(0 => "Warrior",1 => "Rogue", 2=> "Sorcerer");
 				$this->stats[$n]['DRTL_0_class'] = $d1_classes[$this->stats[$n]['DRTL_0_class']];
-				$this->stats[$n][$game.$type.'_pow'] = $this->get_pow($this->stats[$n][$game.$type.'_rank']);
+				$this->stats[$n][$game.'0_pow'] = $this->get_pow($this->stats[$n][$game.'0_rank']);
+				if (Empty($this->stats[$n]['DRTL_0_class'])) {
+					$this->stats[$n]['DRTL_0_image'] = 'no.gif';
+				}
+				else $this->stats[$n]['DRTL_0_image'] = $this->stats[$n]['DRTL_0_class'].'.gif';
 			}
 
 			//StarCraft, StarCraft: BroodWar and WarCraft 2 BNE games
@@ -356,7 +364,7 @@ class pvpgn_stats {
 					//ladder rank
 					$this->stats[$n][$game.'1_pow'] = $this->get_pow($this->stats[$n][$game.'1_rank']);
 				}
-				else die('Incorrect game type for starcraft games.<BR>Use 1 for ladder or 0 for normal games!');
+				else die('Incorrect game type for StarCraft or WarCraft 2 games.<BR>Use 1 for ladder or 0 for normal games!');
 			}
 
 			//WarCraft 3 and WarCraft 3 The Frozen Throne games

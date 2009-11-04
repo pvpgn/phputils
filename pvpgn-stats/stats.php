@@ -1,7 +1,7 @@
 <?php
 // ----------------------------------------------------------------------
 // Player -vs- Player Gaming Network Statistics System
-// http://www.stormzone.ru/
+// http://pvpgn.spfree.net/
 // ----------------------------------------------------------------------
 // LICENSE
 //
@@ -17,6 +17,7 @@
 //
 // To read the license please visit http://www.gnu.org/copyleft/gpl.html
 // ----------------------------------------------------------------------
+// Author from 2.4.4: Pelish (pelish@gmail.com)
 // Original author: jfro (imeepmeep@hotmail.com)
 // Author from 2.3.20: Snaiperx (http://www.rino.com.co/)
 // Author from 2.3.16: STORM (http://www.stormzone.ru/)
@@ -163,8 +164,8 @@ $control_page = "Page: ".($current_page+1)." of ".($max_pages+1);
 
 if(!isset($user)||$user=="") {
 	$display_stats = $stats->get_stats();
-	if ($display_stats[0]['username']== 'NO SUCH USER') $display_stats = "<tr><td bgcolor='#000000' colspan=\"10\"><center><table><tr><td><IMG height=18 src=\"themes/bnet/images/w3tft/unknown.gif\"  width=26></td><td><small>No such user</small></td></tr></table></center></td></tr>";
-	else if(count($display_stats) == 0) $display_stats = "<tr><td bgcolor='#111111' colspan=\"10\"><small><center>No users for this game</center></small></td></tr>";
+	if ($display_stats[0]['username']== 'NO SUCH USER') $display_stats = "<tr><td bgcolor='#000000' colspan=\"11\"><center><table><tr><td><IMG height=18 src=\"themes/bnet/images/w3tft/unknown.gif\"  width=26></td><td><small>No such user</small></td></tr></table></center></td></tr>";
+	else if(count($display_stats) == 0) $display_stats = "<tr><td bgcolor='#111111' colspan=\"11\"><small><center>No users for this game</center></small></td></tr>";
 	else $display_stats['theme_file'] = $game_type."entry.html";
 	$layout_file = "stats.layout.html";
 	$page_data = array("content"=>$display_stats,

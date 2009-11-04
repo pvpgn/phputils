@@ -36,11 +36,12 @@ a:active {
 				<td width="8">&nbsp;</td>
 				<td align="center">
 				<span style="color: white;font-style: bold; align: center;">[[username]]'s stats for:</span>
-				<a href="?game=W2BN&user=[[username]]"><img src="themes/bnet/images/w2bn.jpg" alt="Warcraft 2 Battle.net Edition" height=14 width=28 border=0></a>&nbsp;
-				<a href="stats.php?game=WAR3&user=[[username]]"><img src="themes/bnet/images/WAR3.jpg" border=0 alt="Warcraft 3: Reign of Chaos" width=28 hight=14></a>&nbsp;
-				<a href="stats.php?game=W3XP&user=[[username]]"><img src="themes/bnet/images/WARX.jpg" border=0 alt="Warcraft 3: The Frozen Throne" width=28 hight=14></a>&nbsp;
-				<img src="themes/bnet/images/star.jpg" border=0 alt="Starcraft" width=28 hight=14>&nbsp;
-				<a href="stats.php?game=SEXP&user=[[username]]"><img src="themes/bnet/images/sexp.jpg" alt="Starcraft: Broodwar" width=28 hight=14 border=0></a>
+				<a href="stats.php?game=W2BN&user=[[username]]"><img src="themes/bnet/images/gameicons/W2BN.jpg" alt="Warcraft 2 Battle.net Edition" height=14 width=28 border=0></a>&nbsp;
+				<a href="stats.php?game=WAR3&user=[[username]]"><img src="themes/bnet/images/gameicons/WAR3.jpg" border=0 alt="Warcraft 3: Reign of Chaos" width=28 hight=14></a>&nbsp;
+				<a href="stats.php?game=W3XP&user=[[username]]"><img src="themes/bnet/images/gameicons/W3XP.jpg" border=0 alt="Warcraft 3: The Frozen Throne" width=28 hight=14></a>&nbsp;
+				<img src="themes/bnet/images/gameicons/STAR.jpg" border=0 alt="Starcraft" width=28 hight=14>&nbsp;
+				<a href="stats.php?game=SEXP&user=[[username]]"><img src="themes/bnet/images/gameicons/SEXP.jpg" alt="Starcraft: Broodwar" width=28 hight=14 border=0></a>&nbsp;
+				<a href="stats.php?game=DRTL&user=[[username]]"><img src="themes/bnet/images/gameicons/DRTL.jpg" border=0 alt="Diablo" width=28 hight=14></a>
 				<table align="center">
 	<tr>
 		<td align="left" width="325"><img src="themes/bnet/images/marine.gif"><br><img src="themes/bnet/images/star.gif"></td>
@@ -111,6 +112,11 @@ a:active {
 					<TD class=rankingHeader align=middle></TD>
 					<TD class=rankingHeader align=middle>&nbsp;Normal&nbsp;</TD>
 					<TD class=rankingHeader align=middle>&nbsp;Ladder&nbsp;</TD>
+				</TR>
+				<TR style="BACKGROUND-COLOR: #333333">
+					<TD class=rankingHeader vAlign=top align=right>Rating:</TD>
+					<TD class=rankingRow vAlign=top align=middle>---</TD>
+					<TD class=rankingRow vAlign=top align=middle> [[STAR_1_rating]]</TD>
 				</TR>
 				<TR style="BACKGROUND-COLOR: #666666">
 					<TD class=rankingHeader vAlign=top align=right>Wins:</TD>
@@ -474,7 +480,7 @@ border=0>
 				<td width="50%">
 					<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="0">
 						<tr>
-							<td width="32"><a href="<?php echo $homepage?>"><img src="themes/bnet/images/main/arrow-left.gif" width="32" height="52" border="0"></a></td>
+							<td width="32"><a href="[[ladderroot]]"><img src="themes/bnet/images/main/arrow-left.gif" width="32" height="52" border="0"></a></td>
 							<td background="themes/bnet/images/main/bot-left-bg.gif">
 								<table width="130" height="100%"  border="0" cellpadding="0" cellspacing="0">
 									<TR>
