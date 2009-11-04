@@ -62,21 +62,21 @@
 // System Config settings
 $site_name = "PvPGN server";
 $db_type = "mysql";
-$db_host = "localhost";
+$db_host = "127.0.0.1";
 $db_port = 3306; /* 3306 is the most common MySQL port */
 $db_database = "pvpgn";
 $db_user = "pvpgn";
-$db_pass = "pvpgnrocks";
-$db_prefix = "pvpgn_";
+$db_pass = "pvpgn_rocks";
+$db_prefix = "";
 $db_record = $db_prefix."Record";
-$db_bnet = $db_prefix."bnet";
+$db_bnet = $db_prefix."BNET";
 $db_profile = $db_prefix."profile";
 $db_teams = $db_prefix."team";
 $db_friend = $db_prefix."friend";
 $db_counters = $db_prefix."counters";
 $db_d2 = $db_prefix."d2ladder";
 $homepage = "http://www.myserver.net/";
-$ladderroot = "http://ladder.myserver.net/"; /* can also be something like "http://www.myserver.net/ladder/" */
+$ladderroot = "http://ladders.myserver.net/"; /* can also be something like "http://www.myserver.net/ladder/" */
 
 
 $theme = "bnet";
@@ -125,9 +125,22 @@ $page_max = "50";
 $default_game = "W3XP";
 $default_type = "solo";
 $date_format = " F j - G:i";
-$d2ladder_file = "D:/pvpgn/var/ladders/ladder.D2DV";
+$d2ladder_file = "/usr/local/pvpgn-1.7.8/var/ladders/ladder.D2DV";
 $d2update_time = "3600";
-$stats_version = "2.4.3";
+$stats_version = "2.4.4";
+
+// ---------------------------------------------------------------------------------
+// Administration Interface settings
+//
+//      max_rank:          Maximum rank number allowed on your server
+//      default_sort_by:   Can be auth_lock, auth_admin, uid or acct_username
+//      default_sort_dir:  Can be DESC or ASC
+//
+// ---------------------------------------------------------------------------------
+
+$max_rank = "1000";
+$default_sort_by = "auth_admin";
+$default_sort_dir = "DESC";
 
 
 // ---------------------------------------------------------------------------------
@@ -140,5 +153,8 @@ $stats_version = "2.4.3";
 
 $pvpgn_users = "/usr/local/pvpgn/var/users";
 $use_files = false;
+
+// ---------------------------------------------------------------------------------
+// END of config.inc file
 
 ?>
