@@ -29,7 +29,7 @@ require_once("includes/".$db_type."_handler.php");
 require_once("includes/pvpgn_rank.php");
 
 
-	class pvpgn_stats {
+class pvpgn_stats {
 		var $stats,$game,$data,$user_count;
 		var $sql_host,$sql_port,$sql_db,$sql_user,$sql_pass;
 		var $sql_record,$sql_bnet,$sql_profile,$sql_teams;
@@ -83,7 +83,7 @@ require_once("includes/pvpgn_rank.php");
 		$test_results = $this->data->db_query("SHOW FIELDS FROM ".$db_record." like '$sort_by'");
 		$valid = $this->data->sql_num_rows($test_results);
 		if(!($valid < 1)) {
-			if (strstr($game,"SEXP") || strstr($game,"STAR")) {
+			if (strstr($game,"SEXP") || strstr($game,"STAR") || strstr($game,"W2BN") || strstr($game,"DRTL")) {
 				$ranking = new pvpgn_rank();
 				$ranking->update_ranks($game,$type);
 			}
@@ -266,7 +266,7 @@ require_once("includes/pvpgn_rank.php");
 	function get_perc($user) {
 		$temp_game = $this->get_game_type();
 		$game = substr($this->game,0,5);
-		if(strstr($temp_game,"SEXP_")||strstr($temp_game,"STAR_")||strstr($temp_game,"W2BN_")) {
+		if (($game == "SEXP_")||($game == "STAR_")||($game == "W2BN_")) {
 			$s_game = substr($temp_game,0,5);
 			for($i=0;$i<2;$i++) {
 				if(count($user[$s_game.$i.'_losses']) == 0) $temp[$s_game.$i.'_losses'] = 0;
@@ -280,7 +280,7 @@ require_once("includes/pvpgn_rank.php");
 		}
 		else if(($user[$temp_game.'losses']+$user[$temp_game.'wins']) != 0) $temp[$temp_game.'perc']=($user[$temp_game.'wins']/($user[$temp_game.'losses']+$user[$temp_game.'wins']))*100;
 
-		if($game == "WAR3_" || $game == "W3XP_") {
+		if ($game == "WAR3_" || $game == "W3XP_") {
 			if(($user[$game.'orcs_wins']+$user[$game.'orcs_losses'])!=0) {
 			$temp[$game.'orcs_perc'] = sprintf("%2.2f",($user[$game.'orcs_wins']/($user[$game.'orcs_wins']+$user[$game.'orcs_losses']))*100);}
 			else $temp[$game.'orcs_perc'] = "0.00";
@@ -304,243 +304,124 @@ require_once("includes/pvpgn_rank.php");
 		$temp[$temp_game.'perc'] = sprintf("%2.2f",$temp[$temp_game.'perc']);
 		return $temp;
 	}
+
+// ----------------------------------------------------------------------------------------------
+// This is how we build pows
+// ----------------------------------------------------------------------------------------------
+
+	function get_pow($rank) {
+		$temp=substr($rank,-1);
+		if (($rank<10)or($rank>20)) {
+			if ($temp==1) $pow ='st';
+			else if (($temp==2)) $pow ='nd';
+			else if (($temp==3)) $pow ='rd';
+			else $pow ='th';
+		}
+		else $pow ='th';
+		return $pow;	
+	}
+
 // ----------------------------------------------------------------------------------------------
 // This is how we build Diablo I stats and also some WAR3 & W3XP images routine
 // ----------------------------------------------------------------------------------------------
 
 	function build_other() {
 		$game = substr($this->game,0,5);
-		$d1_classes = array(0 => "Warrior",1 => "Rogue", 2=> "Sorcerer");
+		global $type;
+
 		for($n=0;$n<count($this->stats);$n++) {
 			$this->stats[$n] = array_merge($this->stats[$n],$this->get_username($this->stats[$n]['uid']));
-			if(strstr($this->game,"DRTL")) {
-				$this->stats[$n]['DRTL_0_class'] = $d1_classes[$this->stats[$n]['DRTL_0_class']];
-			}
-		$this->stats[$n][$game.'lastlogin'] = $this->stats[$n]['acct_lastlogin_time'];
-		//print $this->stats[$n]['acct_lastlogin_time'];
-	
-		if ($n%2==0) $this->stats[$n][$game.'bgcolor'] ='#271A13';
-        else $this->stats[$n][$game.'bgcolor'] ='#111111';
-                  
-		if(($game == "STAR_")||($game == "SEXP_")||($game == "W2BN_")) {               
-			global $type;
-			if($type=='ladder') $type=1;
-			else if($type=='normal') $type=0;
-			$this->stats[$n]=array_merge($this->stats[$n],$this->get_perc($this->stats[$n]));
-			if($type==0) {
-				$temp=$this->stats[$n][$game.'0_rank'];
-				if (($temp==11)||($temp==12)||($temp==13)) $temp=15;
-				$normal_rank=substr($temp,-1);
-				// print $solo_rank;  
-				if ($normal_rank==1) $this->stats[$n][$game.'pow'] ='st';
-				else if (($normal_rank==2)) $this->stats[$n][$game.'pow'] ='nd';
-				else if (($normal_rank==3)) $this->stats[$n][$game.'pow'] ='rd';
-				else $this->stats[$n][$game.'pow'] ='th';
-			}
-			else if($type==1){
-				$temp=$this->stats[$n][$game.'1_rank'];
-				if (($temp==11)||($temp==12)||($temp==13)) $temp=15;
-				$ladder_rank=substr($temp,-1);   
-				if ($ladder_rank==1) $this->stats[$n][$game.'ladder_pow'] ='st';
-				else if (($ladder_rank==2)) $this->stats[$n][$game.'ladder_pow'] ='nd';
-				else if (($ladder_rank==3)) $this->stats[$n][$game.'ladder_pow'] ='rd';
-				else $this->stats[$n][$game.'ladder_pow'] ='th';
-			}
-			else exit('incorrect type for starcraft games. use 1 for ladder or 0 for normal games');
-		}
-	
-		if(($game == "WAR3_")){
-			$temp = $this->stats[$n];
-			$temp2 = array("orcs_wins"=>$temp[$game.'orcs_wins'],
-			"humans_wins"=>$temp[$game.'humans_wins'],
-			"nightelves_wins"=>$temp[$game.'nightelves_wins'],
-			"undead_wins"=>$temp[$game.'undead_wins'],
-			"random_wins"=>$temp[$game.'random_wins']);
-			$max_wins = max($temp2);
-			$max_key = array_search($max_wins,$temp2);
-			$max_race = substr($max_key,0,strpos($max_key,"_"));
-			//print 'hola '.$game;
-	    	if($max_wins < 25) $image = "tier1-orcs.gif";
-			else if(($max_wins < 250) && ($max_wins >= 25)) $image = "tier2-".$max_race.".gif";
-			else if(($max_wins < 500) && ($max_wins >= 250)) $image = "tier3-".$max_race.".gif";
-			else if(($max_wins < 1500) && ($max_wins >= 500)) $image = "tier4-".$max_race.".gif";
-			else if($max_wins >= 1500) $image = "tier5-".$max_race.".gif";
-			$fullimage = "full/".$image;
-			$this->stats[$n]['image']=$image;
-			$this->stats[$n]['full_image']=$fullimage;
-
-			//print $fullimage;
-			//print 'hola';
-			$this->stats[$n]=array_merge($this->stats[$n],$this->get_perc($this->stats[$n]));
-			$this->stats[$n]=array_merge($this->stats[$n],$this->get_totals($this->stats[$n]));
-			$this->stats[$n][$game.'solo_xp_perc'] = $this->xp_bar_calc($this->stats[$n][$game.'solo_xp'],$this->stats[$n][$game.'solo_level']);
-
-			//print $this->stats[$n][$game.'solo_xp_perc'];
-			$this->stats[$n][$game.'solo_xpperc'] = $this->xp_bar_calc($this->stats[$n][$game.'solo_xp'],$this->stats[$n][$game.'solo_level']);
-			//print $this->stats[$n][$game.'solo_xpperc'];
-			$this->stats[$n][$game.'solo_level_min'] = ($this->stats[$n][$game.'solo_level']) - 1;
-			$this->stats[$n][$game.'solo_level_max'] = ($this->stats[$n][$game.'solo_level']) + 1;
-			$this->stats[$n][$game.'team_xp_perc'] = $this->xp_bar_calc($this->stats[$n][$game.'team_xp'],$this->stats[$n][$game.'team_level']);
-			$this->stats[$n][$game.'team_level_min'] = ($this->stats[$n][$game.'team_level']) - 1;
-			$this->stats[$n][$game.'team_level_max'] = ($this->stats[$n][$game.'team_level']) + 1;
-			$this->stats[$n][$game.'ffa_perc'] = $this->xp_bar_calc($this->stats[$n][$game.'ffa_xp'],$this->stats[$n][$game.'ffa_level']);
-			$this->stats[$n][$game.'ffa_level_min'] = ($this->stats[$n][$game.'ffa_level']) - 1;
-			$this->stats[$n][$game.'ffa_level_max'] = ($this->stats[$n][$game.'ffa_level']) + 1;
-			$this->stats[$n][$game.'clanname'] = $this->get_clanname($this->stats[$n]['uid']);
-
-			if ($n%2==0) $this->stats[$n][$game.'bgcolor'] ='#271A13';
-			else $this->stats[$n][$game.'bgcolor'] ='#111111';
-			if ($this->stats[$n][$game.'team_rank']==1) $this->stats[$n][$game.'team_pow'] ='st';
-
-			global $type;
-			if (($type=='solo')or($type='team')or($type='ffa')) {
-				$temp=$this->stats[$n][$game.$type.'_rank'];
-				$rank=substr($temp,-1);
-				// print $rank;
-				if (($temp<10)or($temp>20)) {
-					if ($rank==1) $this->stats[$n][$game.'_pow'] ='st';
-					else if ($rank==2) $this->stats[$n][$game.'_pow'] ='nd';
-					else if ($rank==3) $this->stats[$n][$game.'_pow'] ='rd';
-					else $this->stats[$n][$game.'_pow'] ='th';
-				}
-				else $this->stats[$n][$game.'_pow'] ='th';
-			}
-			else if (!(isset($type))) {
-				//solo rank
-				$temp=$this->stats[$n][$game.'solo_rank'];
-				$solo_rank=substr($temp,-1);
-				// print $solo_rank;
-				if (($temp<10)or($temp>20)) {
-					if ($solo_rank==1) $this->stats[$n][$game.'solo_pow'] ='st';
-					else if ($solo_rank==2) $this->stats[$n][$game.'solo_pow'] ='nd';
-					else if ($solo_rank==3) $this->stats[$n][$game.'solo_pow'] ='rd';
-					else $this->stats[$n][$game.'solo_pow'] ='th';
-				}
-				else $this->stats[$n][$game.'solo_pow'] ='th';
-				
-				//team rank
-				$temp=$this->stats[$n][$game.'team_rank'];
-				$team_rank=substr($temp,-1);
-				// print $team_rank;
-				if (($temp<10)or($temp>20)) {
-					if ($team_rank==1) $this->stats[$n][$game.'team_pow'] ='st';
-					else if ($team_rank==2) $this->stats[$n][$game.'team_pow'] ='nd';
-					else if ($team_rank==3) $this->stats[$n][$game.'team_pow'] ='rd';
-					else $this->stats[$n][$game.'team_pow'] ='th';
-				}
-				else $this->stats[$n][$game.'team_pow'] ='th';
-				
-				//team rank
-				$temp=$this->stats[$n][$game.'ffa_rank'];
-				$ffa_rank=substr($temp,-1);
-				// print $solo_rank;
-				if (($temp<10)or($temp>20)) {
-					if ($ffa_rank==1) $this->stats[$n][$game.'ffa_pow'] ='st';
-					else if ($ffa_rank==2) $this->stats[$n][$game.'ffa_pow'] ='nd';
-					else if ($ffa_rank==3) $this->stats[$n][$game.'ffa_pow'] ='rd';
-					else $this->stats[$n][$game.'ffa_pow'] ='th';
-				}
-				else $this->stats[$n][$game.'ffa_pow'] ='th';
-			
-			}
-			else die('incorrect game type<br>please user team,solo or ffa');
-		}
-
-		if($game == "W3XP_") {
-			$temp = $this->stats[$n];
-			$temp2 = array("orcs_wins"=>$temp[$game.'orcs_wins'],
-			"humans_wins"=>$temp[$game.'humans_wins'],
-			"nightelves_wins"=>$temp[$game.'nightelves_wins'],
-			"undead_wins"=>$temp[$game.'undead_wins'],
-			"random_wins"=>$temp[$game.'random_wins']);
-			$max_wins = max($temp2);
-			$max_key = array_search($max_wins,$temp2);
-			$max_race = substr($max_key,0,strpos($max_key,"_"));
-			global $icon_level1,$icon_level2,$icon_level3,$icon_level4,$icon_level5;
-			if($max_wins < $icon_level1) $image = "tier1-orcs.gif";
-			else if(($max_wins < $icon_level2) && ($max_wins >= $icon_level1)) $image = "tier2-".$max_race.".gif";
-			else if(($max_wins < $icon_level3) && ($max_wins >= $icon_level2)) $image = "tier3-".$max_race.".gif";
-			else if(($max_wins < $icon_level4) && ($max_wins >= $icon_level3)) $image = "tier4-".$max_race.".gif";
-			else if(($max_wins < $icon_level5) && ($max_wins >= $icon_level4)) $image = "tier5-".$max_race.".gif";
-			else if($max_wins >= $icon_level5) $image = "tier6-".$max_race.".gif";
-			$fullimage = "full/".$image;
-			$this->stats[$n]['image']=$image;
-			$this->stats[$n]['full_image']=$fullimage;
-
-			$this->stats[$n]=array_merge($this->stats[$n],$this->get_perc($this->stats[$n]));
-			$this->stats[$n]=array_merge($this->stats[$n],$this->get_totals($this->stats[$n]));
-			$this->stats[$n][$game.'solo_xp_perc'] = $this->xp_bar_calc($this->stats[$n][$game.'solo_xp'],$this->stats[$n][$game.'solo_level']);
-			$this->stats[$n][$game.'solo_xpperc'] = $this->xp_bar_calc($this->stats[$n][$game.'solo_xp'],$this->stats[$n][$game.'solo_level']);
-
-			$this->stats[$n][$game.'solo_level_min'] = ($this->stats[$n][$game.'solo_level']) - 1;
-			$this->stats[$n][$game.'solo_level_max'] = ($this->stats[$n][$game.'solo_level']) + 1;
-			$this->stats[$n][$game.'team_xp_perc'] = $this->xp_bar_calc($this->stats[$n][$game.'team_xp'],$this->stats[$n][$game.'team_level']);
-			$this->stats[$n][$game.'team_level_min'] = ($this->stats[$n][$game.'team_level']) - 1;
-			$this->stats[$n][$game.'team_level_max'] = ($this->stats[$n][$game.'team_level']) + 1;
-			$this->stats[$n][$game.'ffa_perc'] = $this->xp_bar_calc($this->stats[$n][$game.'ffa_xp'],$this->stats[$n][$game.'ffa_level']);
-			$this->stats[$n][$game.'ffa_level_min'] = ($this->stats[$n][$game.'ffa_level']) - 1;
-			$this->stats[$n][$game.'ffa_level_max'] = ($this->stats[$n][$game.'ffa_level']) + 1;
-			$this->stats[$n][$game.'clanname'] = $this->get_clanname($this->stats[$n]['uid']);
-			$this->stats[$n][$game.'clantag'] = $this->clantag_to_str($this->stats[$n]['uid']);
 			$this->stats[$n][$game.'lastlogin'] = $this->stats[$n]['acct_lastlogin_time'];
 
+			//bgcolors
 			if ($n%2==0) $this->stats[$n][$game.'bgcolor'] ='#271A13';
-			else $this->stats[$n][$game.'bgcolor'] ='#111111';
-
-			if ($this->stats[$n][$game.'team_rank']==1) $this->stats[$n][$game.'team_pow'] ='st';
- 
-			if (($type=='solo')or($type='team')or($type='ffa')) {
-				$temp=$this->stats[$n][$game.'_rank'];
-				$rank=substr($temp,-1);
-				// print $solo_rank;
-				if (($temp<10)or($temp>20)) {
-					if ($rank==1) $this->stats[$n][$game.'_pow'] ='st';
-					else if ($rank==2) $this->stats[$n][$game.'_pow'] ='nd';
-					else if ($rank==3) $this->stats[$n][$game.'_pow'] ='rd';
-					else $this->stats[$n][$game.'_pow'] ='th';
-				}
-				else $this->stats[$n][$game.'_pow'] ='th';
+        		else $this->stats[$n][$game.'bgcolor'] ='#111111';
+			
+			//Diablo 1 games
+			if ($game == "DRTL_") {
+				$d1_classes = array(0 => "Warrior",1 => "Rogue", 2=> "Sorcerer");
+				$this->stats[$n]['DRTL_0_class'] = $d1_classes[$this->stats[$n]['DRTL_0_class']];
+				$this->stats[$n][$game.$type.'_pow'] = $this->get_pow($this->stats[$n][$game.$type.'_rank']);
 			}
-			else if (!(isset($type))) {
-				//solo rank
-				$temp=$this->stats[$n][$game.'solo_rank'];
-				$solo_rank=substr($temp,-1);
-				// print $solo_rank;
-				if (($temp<10)or($temp>20)) {
-					if ($solo_rank==1) $this->stats[$n][$game.'solo_pow'] ='st';
-					else if ($solo_rank==2) $this->stats[$n][$game.'solo_pow'] ='nd';
-					else if ($solo_rank==3) $this->stats[$n][$game.'solo_pow'] ='rd';
-					else $this->stats[$n][$game.'solo_pow'] ='th';
+
+			//StarCraft, StarCraft: BroodWar and WarCraft 2 BNE games
+			if (($game == "STAR_")||($game == "SEXP_")||($game == "W2BN_")) {               
+				$this->stats[$n]=array_merge($this->stats[$n],$this->get_perc($this->stats[$n]));
+				if (($type=='0')or($type=='1')) {
+					$this->stats[$n][$game.$type.'_pow'] = $this->get_pow($this->stats[$n][$game.$type.'_rank']);
 				}
-				else $this->stats[$n][$game.'solo_pow'] ='th';
-				
-				//team rank
-				$temp=$this->stats[$n][$game.'team_rank'];
-				$team_rank=substr($temp,-1);
-				// print $team_rank;
-				if (($temp<10)or($temp>20)) {
-				if ($team_rank==1) $this->stats[$n][$game.'team_pow'] ='st';
-					else if ($team_rank==2) $this->stats[$n][$game.'team_pow'] ='nd';
-					else if ($team_rank==3) $this->stats[$n][$game.'team_pow'] ='rd';
-					else $this->stats[$n][$game.'team_pow'] ='th';
+				else if (Empty($type)) {
+					//normal rank
+					$this->stats[$n][$game.'0_pow'] = $this->get_pow($this->stats[$n][$game.'0_rank']);
+					//ladder rank
+					$this->stats[$n][$game.'1_pow'] = $this->get_pow($this->stats[$n][$game.'1_rank']);
 				}
-				else $this->stats[$n][$game.'team_pow'] ='th';
-				
-				//team rank
-				$temp=$this->stats[$n][$game.'ffa_rank'];
-				$ffa_rank=substr($temp,-1);
-				// print $solo_rank;
-				if (($temp<10)or($temp>20)) {
-					if ($ffa_rank==1) $this->stats[$n][$game.'ffa_pow'] ='st';
-					else if ($ffa_rank==2) $this->stats[$n][$game.'ffa_pow'] ='nd';
-					else if ($ffa_rank==3) $this->stats[$n][$game.'ffa_pow'] ='rd';
-					else $this->stats[$n][$game.'ffa_pow'] ='th';
+				else die('Incorrect game type for starcraft games.<BR>Use 1 for ladder or 0 for normal games!');
+			}
+
+			//WarCraft 3 and WarCraft 3 The Frozen Throne games
+			if (($game == "WAR3_")||($game == "W3XP_")) {
+				$temp = $this->stats[$n];
+				$temp2 = array("orcs_wins"=>$temp[$game.'orcs_wins'],
+				"humans_wins"=>$temp[$game.'humans_wins'],
+				"nightelves_wins"=>$temp[$game.'nightelves_wins'],
+				"undead_wins"=>$temp[$game.'undead_wins'],
+				"random_wins"=>$temp[$game.'random_wins']);
+				$max_wins = max($temp2);
+				$max_key = array_search($max_wins,$temp2);
+				$max_race = substr($max_key,0,strpos($max_key,"_"));
+
+				if ($game == "WAR3_") {
+	    				if($max_wins < 25) $image = "tier1-orcs.gif";
+					else if(($max_wins < 250) && ($max_wins >= 25)) $image = "tier2-".$max_race.".gif";
+					else if(($max_wins < 500) && ($max_wins >= 250)) $image = "tier3-".$max_race.".gif";
+					else if(($max_wins < 1500) && ($max_wins >= 500)) $image = "tier4-".$max_race.".gif";
+					else if($max_wins >= 1500) $image = "tier5-".$max_race.".gif";
 				}
-				else $this->stats[$n][$game.'ffa_pow'] ='th';
+				else if ($game == "W3XP_") {
+					global $icon_level1,$icon_level2,$icon_level3,$icon_level4,$icon_level5;
+					if($max_wins < $icon_level1) $image = "tier1-orcs.gif";
+					else if(($max_wins < $icon_level2) && ($max_wins >= $icon_level1)) $image = "tier2-".$max_race.".gif";
+					else if(($max_wins < $icon_level3) && ($max_wins >= $icon_level2)) $image = "tier3-".$max_race.".gif";
+					else if(($max_wins < $icon_level4) && ($max_wins >= $icon_level3)) $image = "tier4-".$max_race.".gif";
+					else if(($max_wins < $icon_level5) && ($max_wins >= $icon_level4)) $image = "tier5-".$max_race.".gif";
+					else if($max_wins >= $icon_level5) $image = "tier6-".$max_race.".gif";
 				}
+
+				$fullimage = "full/".$image;
+				$this->stats[$n]['image']=$image;
+				$this->stats[$n]['full_image']=$fullimage;
+				$this->stats[$n]=array_merge($this->stats[$n],$this->get_perc($this->stats[$n]));
+				$this->stats[$n]=array_merge($this->stats[$n],$this->get_totals($this->stats[$n]));
+				$this->stats[$n][$game.'solo_xp_perc'] = $this->xp_bar_calc($this->stats[$n][$game.'solo_xp'],$this->stats[$n][$game.'solo_level']);
+				$this->stats[$n][$game.'solo_xpperc'] = $this->xp_bar_calc($this->stats[$n][$game.'solo_xp'],$this->stats[$n][$game.'solo_level']);
+				$this->stats[$n][$game.'solo_level_min'] = ($this->stats[$n][$game.'solo_level']) - 1;
+				$this->stats[$n][$game.'solo_level_max'] = ($this->stats[$n][$game.'solo_level']) + 1;
+				$this->stats[$n][$game.'team_xp_perc'] = $this->xp_bar_calc($this->stats[$n][$game.'team_xp'],$this->stats[$n][$game.'team_level']);
+				$this->stats[$n][$game.'team_level_min'] = ($this->stats[$n][$game.'team_level']) - 1;
+				$this->stats[$n][$game.'team_level_max'] = ($this->stats[$n][$game.'team_level']) + 1;
+				$this->stats[$n][$game.'ffa_perc'] = $this->xp_bar_calc($this->stats[$n][$game.'ffa_xp'],$this->stats[$n][$game.'ffa_level']);
+				$this->stats[$n][$game.'ffa_level_min'] = ($this->stats[$n][$game.'ffa_level']) - 1;
+				$this->stats[$n][$game.'ffa_level_max'] = ($this->stats[$n][$game.'ffa_level']) + 1;
+				$this->stats[$n][$game.'clanname'] = $this->get_clanname($this->stats[$n]['uid']);
+				$this->stats[$n][$game.'clantag'] = $this->clantag_to_str($this->stats[$n]['uid']);
+
+				if (($type=='solo')||($type=='team')||($type=='ffa')) {
+					$this->stats[$n][$game.'pow'] = $this->get_pow($this->stats[$n][$game.$type.'_rank']);
+				}
+				else if (Empty($type)) {
+					//solo rank
+					$this->stats[$n][$game.'solo_pow'] = $this->get_pow($this->stats[$n][$game.'solo_rank']);
+					//team rank
+					$this->stats[$n][$game.'team_pow'] = $this->get_pow($this->stats[$n][$game.'team_rank']);
+					//ffa rank
+					$this->stats[$n][$game.'ffa_pow'] = $this->get_pow($this->stats[$n][$game.'ffa_rank']);
+				}
+				else die('Incorrect game type.<br>Please use team, solo or ffa!');
 			}
 		}
 	}
+
 // ----------------------------------------------------------------------------------------------
 // This is how we define how the experience calculated:FIXED!!
 // ----------------------------------------------------------------------------------------------

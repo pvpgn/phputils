@@ -62,7 +62,7 @@ $menu_games = array("theme_file"=>"menu_entry.html",
 	array("name"=>"Diablo 2","code"=>"D2DV","type"=>"SC"),
 	array("name"=>"Diablo 2 LOD","code"=>"D2XP","type"=>"SC"),
 	array("name"=>"Warcraft 2 BNE","code"=>"W2BN","type"=>"0"),
-	array("name"=>"Warcraft III:ROC","code"=>"WAR3","type"=>"solo"),
+	array("name"=>"Warcraft III: ROC","code"=>"WAR3","type"=>"solo"),
 	array("name"=>"Warcraft III: Frozen Throne","code"=>"W3XP","type"=>"solo"));
 
 $user_search = $POST['user_search'];
@@ -76,8 +76,8 @@ if(!isset($game) || $game == "") {
 
 $menu_types = array(
 	"STAR"=>array(
-	 array("name"=>"Normal","type"=>0,"game"=>"STAR"),
-	array("name"=>"Ladder","type"=>1,"game"=>"STAR")
+		array("name"=>"Normal","type"=>0,"game"=>"STAR"),
+		array("name"=>"Ladder","type"=>1,"game"=>"STAR")
 		),
 	"SEXP"=>array(
 		array("name"=>"Normal","type"=>0,"game"=>"SEXP"),
