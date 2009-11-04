@@ -1,5 +1,11 @@
 <HTML><HEAD>
-<TITLE><?php // This is how we pull our URL from the "config.inc.php" and replace all refrences// in this html filerequire_once("config.inc.php");echo $site_name;?> - Ladders</TITLE>
+<TITLE><?php
+// This is how we pull our URL from the "config.inc.php" and replace all refrences
+// in this html file
+require_once("config.inc.php");
+global $site_name;
+echo $site_name;
+?> - Ladders</TITLE>
 <style type="text/css">
 <!--
 a:link {
