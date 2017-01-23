@@ -1,0 +1,4 @@
+Imate korisnički nalog koji čeka aktivaciju na vašem PvPGN serveru.
+
+Da bi ste aktivirali ovaj nalog, molimo posetite administratorski interfejs na:
+[[adminurl]]

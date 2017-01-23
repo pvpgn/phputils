@@ -1,0 +1,3 @@
+﻿Pozdrav [[acct_username]]!
+
+Vaš nalog je potvrđen (aktiviran) od strane našeg server administratora. U mogućnosti ste da igrate na našem PvPGN serveru.

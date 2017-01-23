@@ -1,0 +1,4 @@
+There is a user awaiting activation on your PvPGN server.
+
+To activate this user, please visit the admin interface at:
+[[adminurl]]

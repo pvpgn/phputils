@@ -1,0 +1,31 @@
+/* CSS Document */
+body,td,th {
+	color: #FFFFFF;
+}
+body {
+	background-color: #000000;
+}
+a:link {
+	color: #FF9900;
+}
+a:visited {
+	color: #FFCC00;
+}
+a:hover {
+	color: #FF0000;
+}
+a:active {
+	color: #FF0000;
+}
+.errortext {
+	color: #FFFFFF;
+	font-size: 24px;
+}
+.sqlerrortext {
+	color: #FFFFFF;
+	font-size: 20px;
+}
+.successtext {
+	color: #FFFFFF;
+	font-size: 24px;
+}

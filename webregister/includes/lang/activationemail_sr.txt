@@ -1,0 +1,4 @@
+Dobrodošli [[acct_username]]!
+
+Molimo posetite ovaj link za aktivaciju vašeg naloga:
+[[activation_link]]

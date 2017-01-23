@@ -1,0 +1,3 @@
+Hello [[acct_username]]!
+
+Your account has been approved by our administrator.  You will now be able to play on our PvPGN server.

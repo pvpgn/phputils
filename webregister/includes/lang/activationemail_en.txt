@@ -1,0 +1,4 @@
+Hello [[acct_username]]!
+
+Please visit this link to activate your PvPGN account:
+[[activation_link]]
