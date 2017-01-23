@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>PvPGN Statistics System</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link href="themes/[[site_theme]]/main.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+<LINK href="themes/bnet/res/war3-human-ie.css" type=text/css rel=stylesheet>
+<LINK href="themes/bnet/res/war3-ladder-ranking.css" type=text/css rel=stylesheet>
+
+<BODY bgColor=#000000 leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
+<DIV style="WIDTH: 100%; POSITION: absolute; TOP: 85px; TEXT-ALIGN: center">
+<CENTER>
+
+<SCRIPT language=JavaScript 
+src="themes/bnet/res/layerFunctions.js"></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="themes/bnet/res/detection2.js"></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="themes/bnet/res/detection.js"></SCRIPT>
+
+  </TBODY></div>
+
+            
+             
+
+
+
+
+
+
+
+<SCRIPT>
+<!--
+function check(){
+if (document.forms["create_acct"].password.value==""){
+alert("You can`t create account with a blank PASSWORD");
+return false;
+}
+else if (document.forms["create_acct"].username.value==""){
+alert("You can`t create account with a blank USERNAME");
+return false;
+}
+}
+// -->
+</SCRIPT>
+</head>
+
+<div align="center">
+<p><img src="themes/[[site_theme]]/images/rino.jpg" border="0"></p>
+<div style="font-size: 2em;">User Administration</div><br />
+[ <a href="login.php?logout=1">Logout</a> ]
+[ <a href="admin.php?mode=pass">Password encrypter</a> ]
+<!-- [ <a href="admin.php?mode=ranks">Rank Updater</a> ] -->
+<form action="admin.php" method="POST">
+<table border="0" class='menu' width="45%"><tr><td>
+<table cellpadding="2" cellspacing="1" width="100%" border="0"><div align="center">
+User search:&nbsp;<input type="text" class='boxes' name="user_search">
+Method:&nbsp;<select class='boxes' name="user_method">
+<option value="contains">Contains</option>
+<option value="exact">Exact</option>
+</select>
+<input type="submit" class='boxes' name="user_submit" value="Search">
+</div>
+</table>
+</td></tr>
+</table>
+</form>
+<div align="center">
+[[control]]
+<form action="admin.php" method="post">
+<div align="center"><input type="submit" class='boxes' name="submit" value="Submit Changes" /></div>
+<table border="0">
+<tr>
+<td>
+<table border="0" class='menu'>
+<tr>
+<th>Delete</th>
+<th><a href="admin.php?sort_by=auth_lockk&amp;sort_direction=DESC">Lock</a></th>
+<th><a href="admin.php?sort_by=auth_operator&amp;sort_direction=DESC">Op</a></th>
+<th><a href="admin.php?sort_by=auth_admin&amp;sort_direction=DESC">Admin</a></th>
+<th><a href="admin.php?sort_by=uid">UID</a></th>
+<th><a href="admin.php?sort_by=acct_username&amp;sort_direction=ASC">Username</a></th>
+</tr>
+[[content1]]
+</table>
+</td>
+<td>
+<table border="0" class='menu'>
+<tr>
+<th>Delete</th>
+<th><a href="admin.php?sort_by=auth_lockk&amp;sort_direction=DESC">Lock</a></th>
+<th><a href="admin.php?sort_by=auth_operator&amp;sort_direction=DESC">Op</a></th>
+<th><a href="admin.php?sort_by=auth_admin&amp;sort_direction=DESC">Admin</a></th>
+<th><a href="admin.php?sort_by=uid">UID</a></th>
+<th><a href="admin.php?sort_by=acct_username&amp;sort_direction=ASC">Username</a></th>
+</tr>
+[[content2]]
+</table>
+</td>
+</tr>
+</table>
+</form>
+<!-- <form name="create_acct" onsubmit="return check()" action="admin.php" method="POST">
+<table border="0" class='menu' align="center"><tr><td>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<td><font size='1'><b><span>New user account creation:</span></b></font></td>
+<table cellpadding="0" cellspacing="1" border="0">
+<tr>
+<td><input type="text" size="37" class='boxes' name="username" /></td>
+<td><input type="text" size="37" class='boxes' name="password" /></td>
+<td><input type="submit" class='boxes' name="submit_new_user" value="Create" /></td>
+</tr>
+<tr>
+<td><font size="1">Username</font></td>
+<td colspan="2"><font size="1">Encrypted Password</font></td>
+</tr></td></tr>
+</table></table></form> -->
+</div>
+</div>
+
+</body>
+<div align="center">RINO Statistics System v[[stats_version]] by <a href="mailto:imeepmeep@yahoo.com?subject=PvPGN-Stats">jfro</a>and STORM </a>, theme by <a href="mailto:snaiperx@tutopia.com">Snaiperx</a><br /><br />
+<small>
+<a href="http://www.battle.net" target="_blank">Battle.net</a><br />
+1996 - 2003 Blizzard Entertainment. All rights reserved. Battle.net and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment in the U.S. and/or other countries.
+</small>
+</div>
+</html>

@@ -1,0 +1,92 @@
+// ----------------------------------------------------------------------
+// Changelog for PvPGN Statistics System
+// 
+// ----------------------------------------------------------------------
+
+What's New (v2.3.20a) 29/03/2004 :
+  - New bnet theme 
+  - Fix some errors of XP' bar in solo,at,ffa Its not calculate correctly 
+  - FFa support in user's profile 
+  - Clan id support
+  - PvPGN Web Registration System (thx to U-238)
+  - PvPGN Server Status Script(thx to U-238)
+  - Scripts for reset accounts
+  - Other improvements 
+What's New (v2.3.19) 19/08/2003:
+	- fixed errors appeared in login.php and pvpgn_stats.php for some users with dumb php configuration
+	- added link "Back to the stats" to the login.php so u don`t have to type anything now to get back
+	- fixed some issues with tanzania theme for opera and some other browsers
+	- updated FAQ (see docs folder)
+	- new icons and wins/losses system introduced for Warcraft III: The Frozen Throne, you can read
+	  more about it here: http://www.battle.net/war3/ladder/w3xp-ladder-info-laddericons.aspx
+	- fixed some images
+What's New (v2.3.18) 15/07/2003:
+	- added little admin interface, you can lock, delete and give admin/operator rights to the accounts
+	- fixed a bug in Diablo II/LoD, when users with level more than 93 appeared in the stats with wrong
+	  experience (by serjio) (read install instructions CAREFULLY)
+	- some fixes in STAR_user
+	- tanzania theme updated to have all colors in CSS (except user files)
+	- some color modifications in tanzania theme, for example the look of search box and some others
+	- added character icons for Diablo II/LoD ladder
+	- fixed some RoC/TFT images (by shadowcaster)
+	- added FAQ (see docs folder), read it before asking questions !
+What's New (v2.3.17) 15/06/2003:
+	- Rewrote config.inc.php to make it readable and understandable
+	- Fixed a bug when pages for users with rank=0 existed but were empty
+	- Cleaned up the code and also made some fixes to the theme
+	- libs directory renamed to includes due to standards
+	- Fully working Diablo II stats based on MySQL (see install instructions)
+What's New (v2.3.16) 29/05/2003:
+	- Improved documents files and locations
+	- Removed some trash
+	- Fixed chmod things for *nix users
+	- Improved some security things
+	- Divided *nix and win32 versions
+	- Returned stats for all games
+	- Users for WAR3 and W3XP with rank=0 don`t show in the stats anymore
+	- Fixed errors in WAR3_ffa_main and WAR3_team_main while using sortBy
+	- Fixed errors in W3XP_solo_main and W3XP_ffa_entry cuz it showed WAR3 players and not W3XP
+	- added TFT letters into W3XP main pages, so users won`t mess anymore about what they are looking
+What's New (v2.3.15) 4/3/2003:
+	- Fixed it up to be able to display Warcraft 3: Frozen Throne beta ladder stats
+	- Updated Warcraft 3 templates and code to reflect database changes in pvpgn
+What's New (v2.3.14) 2/9/2003:
+    - Fixed the stupid user search problem =)
+What's New (v2.3.13) 1/9/2003:
+    - Diablo 2 ladder updated to XML + XSL format, uses ladder.py modified with XML output, requires php-xslt or xsltproc
+    - Theme updated to have most colors in css
+What's New (v2.3.12) 11/16/2002:
+	- Ranking system, requires the rank calculator, pvpgn-rank, sold seperately ;)
+	- Changed the menu system so it wasn't so huge
+	- Redid some theme links for game types, URLs contain game=SEXP&type=0 for example
+What's New (v2.3.11) 11/9/2002:
+	- New theme engine installed
+What's new (v2.3.10):
+	- Fixed a bug with BW stats, default sorting wasn't being picked right.
+What's New (v2.3.9):
+	- Fixed user search bug, was introduced from the URL variable bug fix
+	- Fixed Diablo 1's class & gold bug (weirdness, I swear i typed them right, re-typed and it worked, heh)
+	- NOTE: Diablo 1 won't work without a patch to pvpgn, this patch will be included already in pvpgn-1.1.5rc3 or later I believe.
+What's New (v2.3.8):
+	- Oops, forgot a few variables in the GET fix, added stats_version to let me display what version easier
+What's New (v2.3.7):
+	- Fixed GET variable problems that occur on some PHP installations
+What's New (v2.3.6):
+	- Initial Diablo 1 support, few problems (gold/class) waiting for fix
+What's New (v2.3.5):
+	- Added error_reporting  (E_ERROR | E_WARNING | E_PARSE); to get rid of dumb notices.
+What's New (v2.3.4):
+	- Fixed small bug some picky PHP might not like
+What's New (v2.3.3):
+	- Added Ladder type Headers to *_main.html files to easier see what stats you're looking at.
+What's New (v2.3.2):
+	- Fixed orcs_wins bug
+What's New (v2.3):
+	- 2.3.1 - Fixed theme, missing random wins/losses from war3 user info pages.
+	- Diablo 2 Ladder support (Requires a working ladder file)
+	- Warcraft 2 BNE Theme files added, inform me if all stats show properly as I do not have them in my db
+What's New (v2.2):
+	- User info pages for SEXP,STAR games added
+	- Experience bars for Warcraft 3 added to user info pages
+	- Win % bars in other games on user info pages
+	- Fixes here & there
