@@ -1,7 +1,6 @@
 
-            The Player vs. Player Gaming Network
-                  Web Registration System
-       ---------------------------------------------
+PvPGN Web Registration System
+====
 
 This script allows a vistor to a website to create a new account
 on a PvPGN server.  It allows you to limit the number of users
@@ -11,44 +10,19 @@ all new accounts must be approved by an administrator.
 
 PvPGN 1.6.0 or later with MySQL support is required.
 
-+-------+
-|Credits|
-+-------+
+
+## Credits
+
 
 This script was written by U-238
 
 The included PvPGN password hashing script (pvpgn_hash.php) was
 written by Aaron aka pandaemonium
 
-+-------+
-|Licence|
-+-------+
 
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License (GPL)
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-General Public License for more details.
+## Current features
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
-
-------------
-
-The included PvPGN password hashing script (pvpgn_hash.php) is
-copyright 2004 by Aaron (aka pandaemonium) and is licenced under
-the GNU Lesser General Public License:
-
-http://www.gnu.org/licenses/lgpl.txt
-
-+----------------+
-|Current features|
-+----------------+
 
 - Takes username and password from an online form to create a new PvPGN
   user.
@@ -72,9 +46,8 @@ http://www.gnu.org/licenses/lgpl.txt
 Got a feature request?  Post it here:
 http://sourceforge.net/tracker/?group_id=111233&atid=658736
 
-+-------------------------+
-|Installation instructions|
-+-------------------------+
+
+## Installation instructions
 
 1.  Edit the file config.php and edit all configuration options to suit
     your needs.
@@ -108,7 +81,7 @@ awaiting_activation table for no reason.
 For this reason, you should perhaps set up a cron job to run purge.php
 periodically (using curl).  An example crontab entry would look like this:
 
-*/30 * * * * /usr/bin/curl http://.../purge.php > /dev/null 2>&1
+`*/30 * * * * /usr/bin/curl http://.../purge.php > /dev/null 2>&1`
 
 This would run purge.php every 30 minutes.
 
@@ -116,9 +89,9 @@ purge.php will simply delete any account from the awaiting_activation table
 that is considered "old". In config.php you can set the time after which an
 account is considered "old", the default is 72 hours.
 
-+---------------+
-|Contact details|
-+---------------+
+
+## Contact details
+
 
 All bug reports should be posted here:
 http://sourceforge.net/tracker/?group_id=111233&atid=658733
