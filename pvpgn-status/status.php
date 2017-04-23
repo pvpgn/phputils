@@ -111,8 +111,10 @@ function parse_statusfile($filename) {
             $pos = strpos($line, "=");
             $property = substr($line, 0, $pos);
             $value = substr($line, $pos + 1);
-            if ($sec_name == 'USERS' || $sec_name == 'GAMES') {
+            if ($sec_name == 'USERS') {
                 list($ini_array[$sec_name][$property]['ctag'],$ini_array[$sec_name][$property]['name']) = explode(',',$value);
+            } else if ($sec_name == 'GAMES') {
+                list($ini_array[$sec_name][$property]['ctag'],$_game_id,$ini_array[$sec_name][$property]['name']) = explode(',',$value);
             } else {
                 $ini_array[$sec_name][$property] = $value;
             }
