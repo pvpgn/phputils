@@ -139,7 +139,7 @@ if ($_POST) {
 		// If the server admin has set $one_email_per_acct = true in config.php, we make sure that there
 		// this email address is unique.
 		if ($one_acct_per_email) {
-			if (@mysql_fetch_row(@mysql_query("SELECT * FROM `pvpgn_BNET` WHERE acct_email = \"" . trim($_POST['acct_email']) . "\";",$dbh))) {
+			if (@mysql_fetch_row(@mysql_query("SELECT * FROM `pvpgn_BNET` WHERE acct_email = \"" . mysql_real_escape_string(trim($_POST['acct_email'])) . "\";",$dbh))) {
 				error(0,$language['oneemailonly'],"");
 			}
 		}
