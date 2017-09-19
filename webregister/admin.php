@@ -41,7 +41,7 @@ if ($_POST && !($_GET['action'] == "dochpass")) {
 			printloginscreen(false);
 		die();
 	} else {
-		if (md5($_POST['pass']) == $adminprefs['password'] && $_POST['user'] == $adminprefs['username']) {
+		if (md5($_POST['pass']) == $adminprefs['password'] && htmlspecialchars($_POST['user']) == $adminprefs['username']) {
 			session_start();
 			$_SESSION['pass'] = $adminprefs['password'];
 		} else {
@@ -64,7 +64,7 @@ if ($_POST && !($_GET['action'] == "dochpass")) {
 if ($_GET['action'] == "delete") {
 	$dbh = @mysql_connect($dbhost,$dbuser,$dbpass);
 	@mysql_select_db($dbname) or error(1,$language["dbconnecterror"],mysql_error());
-	@mysql_query("DELETE FROM `awaiting_activation` WHERE acct_username = \"" . $_GET['user'] . "\";",$dbh);
+	@mysql_query("DELETE FROM `awaiting_activation` WHERE acct_username = \"" . mysql_real_escape_string($_GET['user']) . "\";",$dbh);
 	header("Location: " . $adminfile . "?deleted=" . $_GET['user'] . "&lang=" . $lang);
 } else if ($_GET['action'] == "chpass") {
 	readfile("themes/" . $theme . "/admintop.htm");
@@ -103,7 +103,7 @@ if ($_GET['action'] == "delete") {
 			if (!$fp) {
 				error(0,$language["editadminprefs"],"");
 			}
-			fwrite($fp, "<"."?php\r\n// This file is rewritten by admin.php sometimes\r\n// Editing this file manually is not recommended.\r\n\$adminprefs['username'] = \"" . $_POST['username'] . "\";\r\n\$adminprefs['password'] = \"" . md5($_POST['newpass1']) . "\";\r\n\$adminprefs['firsttime'] = false;\r\n?".">\r\n");
+			fwrite($fp, "<"."?php\r\n// This file is rewritten by admin.php sometimes\r\n// Editing this file manually is not recommended.\r\n\$adminprefs['username'] = \"" . htmlspecialchars($_POST['username']) . "\";\r\n\$adminprefs['password'] = \"" . md5($_POST['newpass1']) . "\";\r\n\$adminprefs['firsttime'] = false;\r\n?".">\r\n");
 			fclose($fp);
 			if (isset($_SESSION['pass'])) {
 				unset($_SESSION['pass']);
