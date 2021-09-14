@@ -28,7 +28,7 @@
 // ---------------------------------------------------------------------------------
 // Database & System Config settings - Key
 //
-//      db_type:           Database type (mysql, pgsql, etc.)
+//      db_type:           Database type (mysqli, mysql, pgsql, etc.)
 //      db_host:           SQL Server Hostname or IP address
 //      db_port:           SQL Server port
 //      db_database:       SQL Database Name
